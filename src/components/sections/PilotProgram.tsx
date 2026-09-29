@@ -31,7 +31,7 @@ export function PilotProgram() {
         <div className="mb-6 flex justify-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-xs font-semibold text-teal backdrop-blur-sm">
             <span className="h-2 w-2 rounded-full bg-teal animate-pulse" />
-            <span>Pilot Program Open • Welcoming Businesses Across All Industries</span>
+            <span>{t.pilot.openBanner}</span>
           </div>
         </div>
 
@@ -58,7 +58,7 @@ export function PilotProgram() {
                 {isHighlight && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                     <span className="rounded-full bg-amber px-4 py-1 text-xs font-bold uppercase tracking-wider text-ink shadow-md">
-                      Recommended
+                      {t.pilot.recommended}
                     </span>
                   </div>
                 )}
@@ -75,7 +75,7 @@ export function PilotProgram() {
 
                   <div className="mb-6 border-b border-border-subtle/50 pb-6">
                     <span className="text-xs text-text-muted">
-                      Custom scope • Tailored for your business
+                      {t.pilot.customScope}
                     </span>
                   </div>
 
@@ -106,7 +106,7 @@ export function PilotProgram() {
                         : 'border border-border-subtle bg-white/5 text-text-soft hover:bg-white/10 hover:border-text-muted'
                     }`}
                   >
-                    Apply for Pilot
+                    {t.pilot.applyButton}
                   </button>
                 </div>
               </motion.div>
@@ -117,7 +117,7 @@ export function PilotProgram() {
         {/* Commitment Promise */}
         <div className="mt-12 rounded-2xl border border-border-subtle/60 bg-ink-light/40 p-6 text-center text-xs text-text-muted sm:px-12">
           <p>
-            🛡️ <strong className="text-text-soft">Zero Long-Term Lock-In:</strong> You own 100% of your workflows, database connections, and configurations. We prove ROI within the pilot period.
+            🛡️ <strong className="text-text-soft">{t.pilot.noLockInTitle}</strong> {t.pilot.noLockInText}
           </p>
         </div>
       </div>

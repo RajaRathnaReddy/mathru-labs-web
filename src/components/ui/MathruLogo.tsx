@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 interface MathruLogoProps {
   variant?: 'full' | 'mark-only';
@@ -104,6 +105,13 @@ export function MathruLogo({
   animateGlow = false,
 }: MathruLogoProps) {
   const config = sizeConfig[size];
+  let isTelugu = false;
+  try {
+    const langContext = useLanguage();
+    isTelugu = langContext?.language === 'te';
+  } catch {
+    // Graceful fallback if used outside LanguageProvider
+  }
 
   if (variant === 'mark-only') {
     return (
@@ -146,9 +154,13 @@ export function MathruLogo({
           >
             <span className="text-[#38BDF8] transition-colors group-hover:text-white">AI</span>
             <span className="text-[#0070F3] font-bold mx-0.5 select-none drop-shadow-[0_0_8px_rgba(0,112,243,0.8)]">|</span>
-            <span className="text-white/90 transition-colors group-hover:text-white">SOFTWARE</span>
+            <span className="text-white/90 transition-colors group-hover:text-white">
+              {isTelugu ? 'సాఫ్ట్‌వేర్' : 'SOFTWARE'}
+            </span>
             <span className="text-[#00D26A] font-bold mx-0.5 select-none drop-shadow-[0_0_8px_rgba(0,210,106,0.8)]">|</span>
-            <span className="text-[#00D26A] transition-colors group-hover:text-white">AUTOMATION</span>
+            <span className="text-[#00D26A] transition-colors group-hover:text-white">
+              {isTelugu ? 'ఆటోమేషన్' : 'AUTOMATION'}
+            </span>
           </div>
         )}
       </div>

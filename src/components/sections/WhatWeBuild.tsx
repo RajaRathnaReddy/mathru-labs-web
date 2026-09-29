@@ -116,7 +116,7 @@ export function WhatWeBuild() {
 
                 {/* Feature Chips */}
                 <div className="mt-6 flex flex-wrap gap-1.5 border-t border-border-subtle/50 pt-4">
-                  {(CARD_TAGS[i] || []).map((tag, idx) => (
+                  {(card.tags || CARD_TAGS[i] || []).map((tag, idx) => (
                     <span
                       key={idx}
                       className={`rounded-md bg-white/[0.04] px-2 py-0.5 text-[11px] font-medium text-text-muted transition-colors ${theme.tagHoverColor}`}

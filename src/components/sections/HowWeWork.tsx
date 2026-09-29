@@ -70,7 +70,7 @@ export function HowWeWork() {
                       {step.title}
                     </h3>
                     <span className="rounded-full bg-white/[0.05] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-text-muted">
-                      Phase 0{i + 1}
+                      {t.howWeWork.phasePrefix} 0{i + 1}
                     </span>
                   </div>
                   <p className="text-sm text-text-muted leading-relaxed">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/providers/LanguageProvider';
 import { IndustrySimulation } from '@/data/industrySimulations';
 import { RotateCcw, Play, Pause, FileText, CheckCheck, ShieldCheck } from 'lucide-react';
 
@@ -17,6 +18,7 @@ export function WhatsAppSimulator({
   compact = false,
   autoPlay = false,
 }: WhatsAppSimulatorProps) {
+  const { language } = useLanguage();
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(autoPlay);
   const [isTyping, setIsTyping] = useState<boolean>(false);
@@ -107,17 +109,17 @@ export function WhatsAppSimulator({
             {currentStep >= messages.length ? (
               <>
                 <RotateCcw className="h-3.5 w-3.5" />
-                <span>Replay</span>
+                <span>{language === 'te' ? 'మళ్లీ చూడండి' : 'Replay'}</span>
               </>
             ) : isPlaying ? (
               <>
                 <Pause className="h-3.5 w-3.5" />
-                <span>Pause</span>
+                <span>{language === 'te' ? 'ఆపండి' : 'Pause'}</span>
               </>
             ) : (
               <>
                 <Play className="h-3.5 w-3.5 fill-current" />
-                <span>Play Journey</span>
+                <span>{language === 'te' ? 'డెమో ప్రారంభించండి' : 'Play Journey'}</span>
               </>
             )}
           </button>
@@ -126,7 +128,7 @@ export function WhatsAppSimulator({
             onClick={handleReset}
             className="rounded-full border border-border-subtle px-3 py-1 text-xs font-medium text-text-muted transition-colors hover:border-text-muted hover:text-text-soft"
           >
-            Reset
+            {language === 'te' ? 'రీసెట్' : 'Reset'}
           </button>
         </div>
 
@@ -181,7 +183,9 @@ export function WhatsAppSimulator({
                   </svg>
                 </div>
                 <p className="text-[10px] text-teal">
-                  {isTyping ? 'typing...' : 'Automated Assistant • Online'}
+                  {isTyping
+                    ? (language === 'te' ? 'టైప్ చేస్తున్నారు...' : 'typing...')
+                    : (language === 'te' ? 'ఆటోమేటెడ్ అసిస్టెంట్ • ఆన్‌లైన్' : 'Automated Assistant • Online')}
                 </p>
               </div>
             </div>
@@ -200,7 +204,7 @@ export function WhatsAppSimulator({
           >
             {/* Security notice */}
             <div className="mx-auto my-1 max-w-[280px] rounded-lg bg-[#182229] px-2.5 py-1 text-center text-[10px] text-[#ffd279] shadow-sm">
-              {simulation.securityNotice || '🔒 End-to-end encrypted autonomous session.'}
+              {simulation.securityNotice || (language === 'te' ? '🔒 ఎండ్-టు-ఎండ్ ఎన్‌క్రిప్టెడ్ ఆటోమేటెడ్ సెషన్.' : '🔒 End-to-end encrypted autonomous session.')}
             </div>
 
             {/* Visible messages */}
@@ -284,10 +288,14 @@ export function WhatsAppSimulator({
                   <Play className="h-5 w-5 fill-current ml-0.5" />
                 </button>
                 <p className="text-xs font-semibold text-text-heading">
-                  Click &ldquo;Play Journey&rdquo; to simulate
+                  {language === 'te'
+                    ? 'డెమో చూడటానికి “ప్రారంభించండి” క్లిక్ చేయండి'
+                    : 'Click “Play Journey” to simulate'}
                 </p>
                 <p className="mt-0.5 text-[11px] text-text-muted max-w-[240px]">
-                  Watch real-time autonomous client interaction &amp; document delivery
+                  {language === 'te'
+                    ? 'రియల్-టైమ్ ఆటోమేటెడ్ కస్టమర్ సంభాషణ & డాక్యుమెంట్ డెలివరీని చూడండి'
+                    : 'Watch real-time autonomous client interaction & document delivery'}
                 </p>
               </div>
             )}
@@ -296,7 +304,9 @@ export function WhatsAppSimulator({
           {/* Chat Input Bar Mock */}
           <div className="flex items-center gap-2 border-t border-white/5 bg-[#202C33] p-2 text-text-muted">
             <div className="flex-1 rounded-full bg-[#2A3942] px-3.5 py-1 text-xs text-text-muted flex items-center justify-between">
-              <span className="text-[11px]">Type a response...</span>
+              <span className="text-[11px]">
+                {language === 'te' ? 'సమాధానం టైప్ చేయండి...' : 'Type a response...'}
+              </span>
             </div>
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-teal text-ink">
               <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">

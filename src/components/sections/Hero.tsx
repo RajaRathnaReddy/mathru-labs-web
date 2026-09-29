@@ -106,14 +106,14 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00D26A] opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00D26A]" />
             </span>
-            <span className="text-[#38BDF8]">AI</span>
+            <span className="text-[#38BDF8]">{t.hero.badgePillAi || 'AI'}</span>
             <span className="text-[#0070F3] font-bold mx-0.5 drop-shadow-[0_0_8px_rgba(0,112,243,0.8)]">|</span>
-            <span className="text-white/95">SOFTWARE</span>
+            <span className="text-white/95">{t.hero.badgePillSoftware || 'SOFTWARE'}</span>
             <span className="text-[#00D26A] font-bold mx-0.5 drop-shadow-[0_0_8px_rgba(0,210,106,0.8)]">|</span>
-            <span className="text-[#00D26A]">AUTOMATION</span>
+            <span className="text-[#00D26A]">{t.hero.badgePillAutomation || 'AUTOMATION'}</span>
             <span className="hidden sm:inline text-white/30 font-light">·</span>
             <span className="hidden sm:inline text-white/60 font-medium lowercase">
-              enterprise operating systems
+              {t.hero.badgeTop}
             </span>
           </span>
         </motion.div>
@@ -123,9 +123,9 @@ export function Hero() {
           variants={prefersReducedMotion ? undefined : item}
           className="text-4xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[76px] leading-[1.08] max-w-5xl mx-auto drop-shadow-md font-[var(--font-heading)]"
         >
-          We turn manual business work into{' '}
+          {t.hero.headlineMain}{' '}
           <span className="bg-gradient-to-r from-[#00D2FF] via-[#00D26A] to-[#FF6B00] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,210,255,0.35)]">
-            intelligent systems.
+            {t.hero.headlineGradient}
           </span>
         </motion.h1>
 
@@ -134,8 +134,7 @@ export function Hero() {
           variants={prefersReducedMotion ? undefined : item}
           className="mt-6 mx-auto max-w-3xl text-base text-white/75 sm:text-xl leading-relaxed font-normal"
         >
-          Custom AI tools, enterprise-grade CRMs, and autonomous workflow engines built for 
-          <span className="font-semibold text-white"> 25+ industries</span> across India. Zero manual busywork, 100% data sovereignty.
+          {t.hero.subline}
         </motion.p>
 
         {/* Primary CTA Buttons */}
@@ -151,7 +150,7 @@ export function Hero() {
             }}
             className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF6600] to-[#FA6400] px-8 py-4 text-sm font-bold text-white shadow-xl shadow-[#FF6600]/30 transition-all duration-300 hover:shadow-2xl hover:shadow-[#FF6600]/50 hover:scale-[1.03] active:scale-[0.98]"
           >
-            <span>Explore 25 Industry Systems</span>
+            <span>{t.hero.exploreIndustries}</span>
             <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
           </a>
 
@@ -162,7 +161,7 @@ export function Hero() {
             className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-8 py-4 text-sm font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:border-[#00D26A]/50 hover:bg-[#00D26A]/15 hover:text-[#00D26A] active:scale-[0.98]"
           >
             <MessageCircle className="h-4 w-4 text-[#00D26A]" />
-            <span>Consult on WhatsApp</span>
+            <span>{t.hero.consultWhatsApp}</span>
           </a>
         </motion.div>
 
@@ -172,13 +171,13 @@ export function Hero() {
           className="mt-8 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-white/60 font-mono"
         >
           <span className="flex items-center gap-1.5">
-            <Shield className="h-3.5 w-3.5 text-[#00D26A]" /> 100% Data Sovereignty (On-Prem / Private Cloud)
+            <Shield className="h-3.5 w-3.5 text-[#00D26A]" /> {t.hero.trustDataSovereignty}
           </span>
           <span className="flex items-center gap-1.5">
-            <Zap className="h-3.5 w-3.5 text-[#38BDF8]" /> 2-Week Pilot Deployment
+            <Zap className="h-3.5 w-3.5 text-[#38BDF8]" /> {t.hero.trustPilot}
           </span>
           <span className="flex items-center gap-1.5">
-            <Layers className="h-3.5 w-3.5 text-[#FF6B00]" /> Multi-Branch Architecture
+            <Layers className="h-3.5 w-3.5 text-[#FF6B00]" /> {t.hero.trustMultiBranch}
           </span>
         </motion.div>
 
@@ -187,16 +186,8 @@ export function Hero() {
           variants={prefersReducedMotion ? undefined : item}
           className="mt-12 flex flex-wrap items-center justify-center gap-2 text-xs"
         >
-          <span className="text-white/40 font-mono font-medium mr-1">Direct Systems For:</span>
-          {[
-            'Hospitals & Clinics',
-            'Diagnostic Labs',
-            'Supermarkets & Retail',
-            'Real Estate & Builders',
-            'Automobile & EV',
-            'Schools & Universities',
-            'Manufacturing & ERP',
-          ].map((ind, i) => (
+          <span className="text-white/40 font-mono font-medium mr-1">{t.hero.directSystemsFor}</span>
+          {t.hero.pills.map((ind, i) => (
             <a
               key={i}
               href="#industries"
@@ -209,7 +200,7 @@ export function Hero() {
             href="#industries"
             className="rounded-full bg-[#FF6600]/20 border border-[#FF6600]/40 px-3.5 py-1 font-bold text-[#FF6600] transition-all duration-200 hover:bg-[#FF6600] hover:text-white active:scale-95"
           >
-            +18 more sectors →
+            {t.hero.moreSectors}
           </a>
         </motion.div>
       </motion.div>

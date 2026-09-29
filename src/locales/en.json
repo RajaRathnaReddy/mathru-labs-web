@@ -13,14 +13,88 @@
   },
   "hero": {
     "headline": "We turn manual business work into intelligent systems.",
-    "subline": "Custom AI tools, enterprise CRMs, and intelligent software purpose-built for every industry.",
+    "subline": "Custom AI tools, enterprise-grade CRMs, and autonomous workflow engines built for 25+ industries across India. Zero manual busywork, 100% data sovereignty.",
     "cta1": "See how it works",
-    "cta2": "Talk on WhatsApp"
+    "cta2": "Talk on WhatsApp",
+    "exploreIndustries": "Explore 25 Industry Systems",
+    "consultWhatsApp": "Consult on WhatsApp",
+    "trustDataSovereignty": "100% Data Sovereignty (On-Prem / Private Cloud)",
+    "trustPilot": "2-Week Pilot Deployment",
+    "trustMultiBranch": "Multi-Branch Architecture",
+    "directSystemsFor": "Direct Systems For:",
+    "moreSectors": "+18 more sectors →",
+    "headlineMain": "We turn manual business work into ",
+    "headlineGradient": "intelligent systems.",
+    "badgeTop": "enterprise operating systems",
+    "badgePillAi": "AI",
+    "badgePillSoftware": "SOFTWARE",
+    "badgePillAutomation": "AUTOMATION",
+    "pills": [
+      "Hospitals & Clinics",
+      "Diagnostic Labs",
+      "Supermarkets & Retail",
+      "Real Estate & Builders",
+      "Automobile & EV",
+      "Schools & Universities",
+      "Manufacturing & ERP"
+    ]
   },
   "problem": {
     "badge": "The Problem",
     "title": "From chaos to clarity",
     "description": "Whether you run healthcare, retail, manufacturing, real estate, education, or finance, manual work drains time and leaks revenue. We connect your scattered tools into one intelligent system.",
+    "chaosBadge": "Fragmented & Manual",
+    "systemBadge": "Automated & Integrated",
+    "consequenceLabel": "Consequence:",
+    "consequenceText": "Leads drop off, staff is overwhelmed with repetitive calls, and customer trust erodes.",
+    "outcomeLabel": "Outcome:",
+    "outcomeText": "Zero lost customer leads, 24/7 autonomous WhatsApp responses, custom CRM tracking, and total executive visibility into daily operations.",
+    "sideBySide": "Side-by-Side",
+    "scaleBadge": "Real-World Scale & Reliability",
+    "scaleTitle": "Built for real business scale — from local clinics to 700,000+ records",
+    "scaleDesc": "Whether you are a diagnostic lab handling 100 daily tests or a multi-branch network with hundreds of thousands of members, our custom software keeps operations instant, accurate, and completely automated.",
+    "benchmarkBadge": "Live Production Benchmark · Multi-Branch Scale",
+    "benchmarkTitle": "Automating Operations for 700,000+ Active Members Across All Regional Branches",
+    "benchmarkDesc": "A look at the actual custom infrastructure we built and manage for high-capacity community networks — proving our systems handle massive data volume, AI personalization, and daily automation flawlessly.",
+    "activeProfiles": "700K+ Active Profiles",
+    "guarantees": [
+      {
+        "title": "Instant 24/7 Response",
+        "highlight": "< 30 Seconds",
+        "badge": "Speed Guarantee",
+        "description": "Your customers never wait. Inquiries on WhatsApp and web are answered, triaged, and booked automatically — day or night."
+      },
+      {
+        "title": "Zero Lost Records & Leaks",
+        "highlight": "100% Accurate Data",
+        "badge": "Reliability",
+        "description": "Stops human typing mistakes and scattered paper registers. Orders, patient records, and bills sync directly into one unified database."
+      },
+      {
+        "title": "Battle-Tested at Scale",
+        "highlight": "700,000+ Records Handled",
+        "badge": "High-Volume Scale",
+        "description": "Not an experiment. Our automation engines already power large-scale community organizations managing 7 Lakh+ active member records and daily automated follow-ups."
+      }
+    ],
+    "benchmarkFeatures": [
+      {
+        "title": "Automated Daily Content Broadcasts",
+        "description": "High-throughput WhatsApp automation delivering daily morning verses, announcements, and messages to hundreds of thousands of members simultaneously without downtime."
+      },
+      {
+        "title": "AI Avatar & Voice-Cloned Wishes",
+        "description": "Automated birthday pipeline using cloned leadership voice and AI avatar to generate personalized birthday greetings sent directly to celebrating members every morning."
+      },
+      {
+        "title": "Weekly Services & Branch Sync",
+        "description": "End-to-end automation of weekly service attendance, multi-branch data synchronization, seat reservations, and operational logistical workflows across all branches."
+      },
+      {
+        "title": "Months of Follow-up & Care Queues",
+        "description": "Intelligent CRM maintaining months of historical member follow-up data, automated care inquiries, prayer request routing, and lifecycle milestone tracking."
+      }
+    ],
     "chaos": {
       "title": "Today",
       "items": [
@@ -49,22 +123,42 @@
       {
         "title": "Workflow Automation & Tools",
         "description": "We connect your existing tools, ERPs, and spreadsheets into fast, automatic workflows. What took hours of manual work now happens in seconds.",
-        "icon": "workflow"
+        "icon": "workflow",
+        "tags": [
+          "Custom Internal Tools",
+          "n8n / Webhooks",
+          "Instant Sync"
+        ]
       },
       {
         "title": "Autonomous AI Agents",
         "description": "Intelligent conversational agents on WhatsApp, web chat, and voice that handle customer inquiries, bookings, and 24/7 client triage.",
-        "icon": "ai"
+        "icon": "ai",
+        "tags": [
+          "WhatsApp AI Agents",
+          "Voice & Text",
+          "24/7 Client Triage"
+        ]
       },
       {
         "title": "Custom CRMs & Business Apps",
         "description": "Bespoke web applications and CRMs engineered for your exact business model — tracking clients, orders, patient visits, jobs, or inventory.",
-        "icon": "crm"
+        "icon": "crm",
+        "tags": [
+          "Custom CRMs & Portals",
+          "Any Business Entity",
+          "Multi-Tenant OS"
+        ]
       },
       {
         "title": "Integrations & Live Dashboards",
         "description": "Connect WhatsApp, your billing software, Tally/Zoho, payment gateways, and databases into one real-time operational command center.",
-        "icon": "dashboard"
+        "icon": "dashboard",
+        "tags": [
+          "Live KPI Dashboards",
+          "ERP & Tally Sync",
+          "Real-Time Alerts"
+        ]
       }
     ]
   },
@@ -105,11 +199,21 @@
         "text": "Your CBC report is ready! All values are within normal range. Full report attached below. — Sunrise Diagnostics",
         "time": "12:15 PM"
       }
-    ]
+    ],
+    "tabLabels": {
+      "diagnostic-labs": "Diagnostic Labs",
+      "hospitals-clinics": "Hospitals & Clinics",
+      "real-estate-agencies": "Real Estate",
+      "banks-nbfcs": "Finance & Loans",
+      "automobile-dealers": "Automobile Service",
+      "gyms-fitness": "Gyms & Fitness",
+      "pharmacy": "Pharmacy",
+      "logistics-transport": "Logistics"
+    }
   },
   "industries": {
-    "badge": "Every Industry Supported",
-    "title": "Purpose-built solutions for 25+ business sectors",
+    "badge": "Enterprise Directory",
+    "title": "We Work With Every Industry",
     "sectors": [
       {
         "name": "Healthcare & Wellness",
@@ -174,7 +278,36 @@
           "B2B purchase order parsing and raw material stock alerts"
         ]
       }
-    ]
+    ],
+    "description": "We develop bespoke tools, custom software, CRMs, and autonomous AI operating systems for 25+ business sectors. If your specific industry isn't listed, we engineer a custom solution from scratch.",
+    "searchPlaceholder": "Search your business type (e.g. Hospital, Diagnostic, Pharmacy, CA Firm, Real Estate)...",
+    "showingText": "Showing",
+    "ofText": "of",
+    "sectorsText": "business sectors",
+    "filteredBy": "Filtered by",
+    "allIndustries": "All Industries",
+    "noMatchTitle": "Don't see your business here?",
+    "noMatchDesc": "No exact match found, but we build custom intelligent automation systems for any business. Tell us what repetitive manual work you do, and we'll engineer the solution.",
+    "tellUsWhatYouDo": "Tell us what you do",
+    "tailoredArchitecture": "Tailored Architecture",
+    "seeHowItWorks": "See how it works",
+    "coreModulesIncluded": "Core Modules Included:",
+    "customCapabilities": "Custom Capabilities:",
+    "customChips": [
+      "Custom Webhooks",
+      "Multi-Database Sync",
+      "WhatsApp Agents",
+      "Live KPI Dashboards"
+    ],
+    "categories": {
+      "Healthcare & Wellness": "Healthcare & Wellness",
+      "Retail & Commerce": "Retail & Commerce",
+      "Finance & Professional": "Finance & Professional",
+      "Real Estate & Construction": "Real Estate & Construction",
+      "Education & Community": "Education & Community",
+      "Hospitality & Food": "Hospitality & Food",
+      "Logistics & Manufacturing": "Logistics & Manufacturing"
+    }
   },
   "howWeWork": {
     "badge": "How We Work",
@@ -200,12 +333,19 @@
         "title": "Improve",
         "description": "We provide 24/7 monitoring, security updates, and continuous optimization as your business scales."
       }
-    ]
+    ],
+    "phasePrefix": "Phase"
   },
   "pilot": {
     "badge": "Pilot Program",
     "title": "Start with a pilot. Prove the ROI. Scale with confidence.",
     "description": "We work with businesses across every industry. Start with a focused pilot to automate a single high-impact bottleneck before scaling to a complete operating system.",
+    "openBanner": "Pilot Program Open • Welcoming Businesses Across All Industries",
+    "recommended": "Recommended",
+    "customScope": "Custom scope • Tailored for your business",
+    "applyButton": "Apply for Pilot",
+    "noLockInTitle": "Zero Long-Term Lock-In:",
+    "noLockInText": "You own 100% of your workflows, database connections, and configurations. We prove ROI within the pilot period.",
     "tiers": [
       {
         "name": "Starter Tool",
@@ -248,11 +388,19 @@
   "whyMathru": {
     "badge": "Why \"Mathru\"",
     "title": "Mathru means mother. Mathru means origin.",
-    "story": "We named ourselves Mathru because we believe technology should care for a business the way a mother cares for her family — quietly, reliably, always there. We don't build flashy tools that impress for a day. We build systems that run behind the scenes, day after day, making sure nothing falls through the cracks. Your customers get instant replies. Your operational pipeline runs without errors. Your leads get followed up on time. Your team gets their hours back. That's the Mathru way."
+    "story": "We named ourselves Mathru because we believe technology should care for a business the way a mother cares for her family — quietly, reliably, always there. We don't build flashy tools that impress for a day. We build systems that run behind the scenes, day after day, making sure nothing falls through the cracks. Your customers get instant replies. Your operational pipeline runs without errors. Your leads get followed up on time. Your team gets their hours back. That's the Mathru way.",
+    "philosophyTitle": "The Philosophy",
+    "philosophySub": "Quiet, reliable, always there"
   },
   "trust": {
     "badge": "Trust & Security",
     "title": "Your data is yours. Always.",
+    "encryptedTitle": "Encrypted End-to-End",
+    "encryptedSub": "TLS 1.3 & AES-256 at rest",
+    "zeroResaleTitle": "Zero Data Resale",
+    "zeroResaleSub": "Never shared or monetized",
+    "dpdpTitle": "DPDP Act Ready",
+    "dpdpSub": "Indian privacy compliance",
     "promises": [
       "We collect only the operational data needed to power your custom system.",
       "Customer, financial, and business data is strictly isolated and never shared outside your organization.",
@@ -278,12 +426,17 @@
       "error": "Something went wrong. Please try WhatsApp instead."
     },
     "whatsapp": "Chat on WhatsApp",
-    "whatsappHint": "Prefer a direct conversation? Message our team directly."
+    "whatsappHint": "Prefer a direct conversation? Message our team directly.",
+    "businessPlaceholder": "e.g. Diagnostic Centre, Hospital, CA Firm, Real Estate, Retail, Factory, School..."
   },
   "footer": {
     "location": "India",
     "copyright": "Mathru Labs",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "allRightsReserved": "All rights reserved.",
+    "builtWithCare": "Built with care in India."
   }
 }

@@ -6,8 +6,67 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { SECTION_IDS, WHATSAPP_NUMBER } from '@/lib/constants';
 
+const TELUGU_BUSINESS_OPTIONS = [
+  'ఆసుపత్రులు & క్లినిక్స్',
+  'డయాగ్నస్టిక్ సెంటర్లు & ల్యాబ్‌లు',
+  'ఫార్మసీ & మెడికల్',
+  'జిమ్స్ & ఫిట్‌నెస్ సెంటర్లు',
+  'సెలూన్లు & స్పాలు',
+  'షాపింగ్ మాల్స్ & మల్టీప్లెక్స్‌లు',
+  'సూపర్‌మార్కెట్‌లు & కిరాణా',
+  'ఎలక్ట్రానిక్స్ & ఉపకరణాల స్టోర్లు',
+  'జ్యువెలరీ షోరూమ్‌లు',
+  'ఆటోమొబైల్ డీలర్‌షిప్‌లు & సర్వీస్',
+  'బ్యాంకులు, NBFCలు & రుణాలు',
+  'ఇన్సూరెన్స్ & బీమా ఏజెన్సీలు',
+  'లీగల్ సంస్థలు & న్యాయవాదులు',
+  'చార్టర్డ్ అకౌంటెంట్ & టాక్స్ సంస్థలు',
+  'రియల్ ఎస్టేట్ & ప్రాపర్టీస్',
+  'బిల్డర్లు & నిర్మాణం',
+  'ఇంటీరియర్ డిజైనర్లు & ఆర్కిటెక్ట్స్',
+  'పాఠశాలలు & విద్యాసంస్థలు',
+  'కోచింగ్ సెంటర్లు & అకాడమీలు',
+  'ఎన్‌జీవోలు, ట్రస్ట్‌లు & కమ్యూనిటీలు',
+  'హోటళ్లు & రిసార్ట్‌లు',
+  'రెస్టారెంట్లు & కేఫ్‌లు',
+  'ఈవెంట్ మేనేజ్‌మెంట్',
+  'లాజిస్టిక్స్ & ట్రాన్స్‌పోర్ట్',
+  'తయారీ రంగం & MSME',
+  'ఇతర కస్టమ్ వ్యాపారం',
+];
+
+const ENGLISH_BUSINESS_OPTIONS = [
+  'Hospitals & Clinics',
+  'Diagnostic Centres & Labs',
+  'Pharmacy',
+  'Gyms & Fitness Centers',
+  'Salons & Spas',
+  'Shopping Malls',
+  'Supermarkets & Grocery',
+  'Electronics & Appliance Stores',
+  'Jewellery Stores',
+  'Automobile Dealerships & Service',
+  'Banks, NBFCs & Finance',
+  'Insurance Agencies',
+  'Legal Firms',
+  'Accounting & CA Firms',
+  'Real Estate Agencies',
+  'Builders & Construction',
+  'Interior Designers',
+  'Schools',
+  'Coaching Centers',
+  'NGOs & Trusts',
+  'Hotels & Resorts',
+  'Restaurants & Cafes',
+  'Event Management',
+  'Logistics & Transport',
+  'Manufacturing & MSME',
+  'Other / Custom Business',
+];
+
 export function Contact() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const businessOptions = language === 'te' ? TELUGU_BUSINESS_OPTIONS : ENGLISH_BUSINESS_OPTIONS;
   const [formState, setFormState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -91,36 +150,13 @@ export function Contact() {
                 name="business"
                 list="business-options"
                 required
-                placeholder="e.g. Diagnostic Centre, Hospital, CA Firm, Real Estate, Retail, Factory, School..."
+                placeholder={t.contact.businessPlaceholder}
                 className="w-full rounded-xl border border-border-subtle bg-indigo/30 px-4 py-3 text-sm text-text-soft placeholder-text-muted/50 transition-colors focus:border-amber/50 focus:outline-none focus:ring-1 focus:ring-amber/50"
               />
               <datalist id="business-options">
-                <option value="Hospitals & Clinics" />
-                <option value="Diagnostic Centres & Labs" />
-                <option value="Pharmacy" />
-                <option value="Gyms & Fitness Centers" />
-                <option value="Salons & Spas" />
-                <option value="Shopping Malls" />
-                <option value="Supermarkets & Grocery" />
-                <option value="Electronics & Appliance Stores" />
-                <option value="Jewellery Stores" />
-                <option value="Automobile Dealerships & Service" />
-                <option value="Banks, NBFCs & Finance" />
-                <option value="Insurance Agencies" />
-                <option value="Legal Firms" />
-                <option value="Accounting & CA Firms" />
-                <option value="Real Estate Agencies" />
-                <option value="Builders & Construction" />
-                <option value="Interior Designers" />
-                <option value="Schools" />
-                <option value="Coaching Centers" />
-                <option value="NGOs & Trusts" />
-                <option value="Hotels & Resorts" />
-                <option value="Restaurants & Cafes" />
-                <option value="Event Management" />
-                <option value="Logistics & Transport" />
-                <option value="Manufacturing & MSME" />
-                <option value="Other / Custom Business" />
+                {businessOptions.map((opt, idx) => (
+                  <option key={idx} value={opt} />
+                ))}
               </datalist>
             </div>
 

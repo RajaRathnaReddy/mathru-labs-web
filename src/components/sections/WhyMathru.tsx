@@ -53,8 +53,8 @@ export function WhyMathru() {
               M
             </div>
             <div>
-              <p className="text-sm font-semibold text-text-heading">The Philosophy</p>
-              <p className="text-xs text-text-muted">Quiet, reliable, always there</p>
+              <p className="text-sm font-semibold text-text-heading">{t.whyMathru.philosophyTitle}</p>
+              <p className="text-xs text-text-muted">{t.whyMathru.philosophySub}</p>
             </div>
           </div>
         </motion.div>

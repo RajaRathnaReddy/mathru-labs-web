@@ -35,7 +35,7 @@ export function Footer() {
           {/* Navigation */}
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-text-muted">
-              Navigation
+              {t.footer.navigation}
             </h3>
             <ul className="space-y-3">
               {NAV_ITEMS.map((item) => (
@@ -54,7 +54,7 @@ export function Footer() {
           {/* Legal + Contact */}
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-text-muted">
-              Legal
+              {t.footer.legal}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -93,10 +93,10 @@ export function Footer() {
         <div className="mt-12 border-t border-border-subtle pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-text-muted">
-              &copy; {currentYear} {t.footer.copyright}. All rights reserved.
+              &copy; {currentYear} {t.footer.copyright}. {t.footer.allRightsReserved}
             </p>
             <p className="text-xs text-text-muted/60">
-              Built with care in India.
+              {t.footer.builtWithCare}
             </p>
           </div>
         </div>

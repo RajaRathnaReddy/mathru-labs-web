@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300;400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 /* ── Brand Design Tokens (Mathru Labs Corporate Identity) ── */
@@ -37,7 +38,7 @@
 
   --font-heading: var(--font-sora);
   --font-body: var(--font-inter);
-  --font-telugu: var(--font-noto-sans-telugu);
+  --font-telugu: 'Anek Telugu', 'Noto Sans Telugu', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
 /* ── Base Styles ── */
@@ -99,7 +100,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Telugu text class */
 .text-telugu {
-  font-family: var(--font-telugu), system-ui, sans-serif;
+  font-family: 'Anek Telugu', 'Noto Sans Telugu', system-ui, sans-serif;
 }
 
 /* ── Custom Utilities ── */
@@ -266,4 +267,86 @@ h1, h2, h3, h4, h5, h6 {
   .cursor-glow::after {
     display: none;
   }
+}
+
+/* ── Telugu Typographic Engine ── */
+html[lang="te"],
+html.text-telugu,
+body.text-telugu,
+.text-telugu {
+  font-family: 'Anek Telugu', 'Noto Sans Telugu', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+  line-height: 1.8 !important;
+  letter-spacing: 0 !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Master letter-spacing reset: cancel all negative tracking on any Telugu element */
+html[lang="te"] *,
+html.text-telugu *,
+body.text-telugu *,
+.text-telugu * {
+  letter-spacing: normal !important;
+}
+
+/* Headings in Telugu: Optical sizing, balanced weight, and ample vertical clearance */
+html[lang="te"] h1,
+.text-telugu h1 {
+  font-family: 'Anek Telugu', 'Noto Sans Telugu', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(2rem, 5vw, 3.85rem) !important;
+  line-height: 1.32 !important;
+  letter-spacing: 0 !important;
+  overflow-wrap: break-word;
+}
+
+html[lang="te"] h2,
+.text-telugu h2 {
+  font-family: 'Anek Telugu', 'Noto Sans Telugu', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(1.75rem, 3.8vw, 2.75rem) !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0 !important;
+  overflow-wrap: break-word;
+}
+
+html[lang="te"] h3,
+.text-telugu h3 {
+  font-family: 'Anek Telugu', 'Noto Sans Telugu', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem) !important;
+  line-height: 1.38 !important;
+  letter-spacing: 0 !important;
+  overflow-wrap: break-word;
+}
+
+html[lang="te"] h4,
+html[lang="te"] h5,
+html[lang="te"] h6,
+.text-telugu h4,
+.text-telugu h5,
+.text-telugu h6,
+html[lang="te"] [class*="font-[var(--font-heading)]"],
+.text-telugu [class*="font-[var(--font-heading)]"] {
+  font-family: 'Anek Telugu', 'Noto Sans Telugu', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0 !important;
+  overflow-wrap: break-word;
+}
+
+/* Telugu paragraph line-height and spacing */
+html[lang="te"] p,
+.text-telugu p {
+  line-height: 1.8 !important;
+  font-weight: 400;
+}
+
+/* Chips, badges, buttons in Telugu */
+html[lang="te"] button,
+html[lang="te"] a,
+.text-telugu button,
+.text-telugu a {
+  line-height: 1.5;
 }

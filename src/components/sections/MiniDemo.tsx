@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useLanguage } from '@/providers/LanguageProvider';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SECTION_IDS } from '@/lib/constants';
@@ -8,6 +9,7 @@ import {
   INDUSTRY_SIMULATIONS,
   IndustrySimulation,
 } from '@/data/industrySimulations';
+import { TELUGU_INDUSTRY_SIMULATIONS } from '@/data/teluguSimulations';
 import { WhatsAppSimulator } from '@/components/ui/WhatsAppSimulator';
 import {
   FlaskConical,
@@ -64,9 +66,13 @@ const FEATURED_SIMULATIONS = [
 ];
 
 export function MiniDemo() {
+  const { t, language } = useLanguage();
   const [selectedId, setSelectedId] = useState<string>('diagnostic-labs');
+  
+  const simulationBank = language === 'te' ? TELUGU_INDUSTRY_SIMULATIONS : INDUSTRY_SIMULATIONS;
   const currentSimulation: IndustrySimulation =
-    INDUSTRY_SIMULATIONS[selectedId] ||
+    simulationBank[selectedId] ||
+    simulationBank['diagnostic-labs'] ||
     INDUSTRY_SIMULATIONS['diagnostic-labs'];
 
   return (
@@ -74,7 +80,7 @@ export function MiniDemo() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Dynamic Section Heading based on Selected Industry */}
         <SectionHeading
-          badge="SEE IT IN ACTION"
+          badge={t.miniDemo.badge}
           title={currentSimulation.title}
           description={currentSimulation.subtitle}
         />
@@ -96,7 +102,7 @@ export function MiniDemo() {
                 aria-pressed={isSelected}
               >
                 <Icon className="h-3.5 w-3.5 shrink-0" />
-                <span>{item.label}</span>
+                <span>{t.miniDemo.tabLabels?.[item.id as keyof typeof t.miniDemo.tabLabels] || item.label}</span>
               </button>
             );
           })}

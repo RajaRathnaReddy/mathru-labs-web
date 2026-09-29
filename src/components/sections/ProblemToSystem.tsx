@@ -21,38 +21,19 @@ export function ProblemToSystem() {
   const { t } = useLanguage();
   const [activeView, setActiveView] = useState<'both' | 'chaos' | 'system'>('both');
 
-  // Clear, human-understandable guarantees backed by real engineering and high-volume scale
-  const operationalGuarantees = [
-    {
-      title: 'Instant 24/7 Response',
-      highlight: '< 30 Seconds',
-      badge: 'Speed Guarantee',
-      badgeColor: 'text-sky-400 bg-sky-500/10 border-sky-500/20',
-      icon: Zap,
-      iconColor: 'text-sky-400 bg-sky-500/10',
-      description:
-        'Your customers never wait. Inquiries on WhatsApp and web are answered, triaged, and booked automatically — day or night.',
-    },
-    {
-      title: 'Zero Lost Records & Leaks',
-      highlight: '100% Accurate Data',
-      badge: 'Reliability',
-      badgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
-      icon: ShieldCheck,
-      iconColor: 'text-emerald-400 bg-emerald-500/10',
-      description:
-        'Stops human typing mistakes and scattered paper registers. Orders, patient records, and bills sync directly into one unified database.',
-    },
-    {
-      title: 'Battle-Tested at Scale',
-      highlight: '700,000+ Records Handled',
-      badge: 'High-Volume Scale',
-      badgeColor: 'text-amber bg-amber/10 border-amber/20',
-      icon: Database,
-      iconColor: 'text-amber bg-amber/10',
-      description:
-        'Not an experiment. Our automation engines already power large-scale community organizations managing 7 Lakh+ active member records and daily automated follow-ups.',
-    },
+  const guaranteeIcons = [Zap, ShieldCheck, Database];
+  const guaranteeColors = [
+    { badge: 'text-sky-400 bg-sky-500/10 border-sky-500/20', icon: 'text-sky-400 bg-sky-500/10' },
+    { badge: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20', icon: 'text-emerald-400 bg-emerald-500/10' },
+    { badge: 'text-amber bg-amber/10 border-amber/20', icon: 'text-amber bg-amber/10' },
+  ];
+
+  const benchmarkIcons = [Send, Sparkles, Calendar, HeartHandshake];
+  const benchmarkColors = [
+    { border: 'hover:border-emerald-500/30', icon: 'bg-emerald-500/10 text-emerald-400' },
+    { border: 'hover:border-sky-500/30', icon: 'bg-sky-500/10 text-sky-400' },
+    { border: 'hover:border-amber/30', icon: 'bg-amber/10 text-amber' },
+    { border: 'hover:border-purple-500/30', icon: 'bg-purple-500/10 text-purple-400' },
   ];
 
   return (
@@ -75,7 +56,7 @@ export function ProblemToSystem() {
                   : 'text-text-muted hover:text-text-soft'
               }`}
             >
-              Side-by-Side
+              {t.problem.sideBySide}
             </button>
             <button
               onClick={() => setActiveView('chaos')}
@@ -118,7 +99,7 @@ export function ProblemToSystem() {
                 <div className="mb-6 flex items-center justify-between">
                   <div>
                     <span className="inline-block rounded-full bg-red-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-red-400">
-                      Fragmented & Manual
+                      {t.problem.chaosBadge}
                     </span>
                     <h3 className="mt-2 text-2xl font-bold text-text-heading">
                       {t.problem.chaos.title}
@@ -150,7 +131,7 @@ export function ProblemToSystem() {
                 </ul>
 
                 <div className="mt-6 rounded-xl border border-red-500/20 bg-red-950/30 p-4 text-xs text-red-300/80">
-                  <span className="font-semibold text-red-400">Consequence:</span> Leads drop off, staff is overwhelmed with repetitive calls, and customer trust erodes.
+                  <span className="font-semibold text-red-400">{t.problem.consequenceLabel}</span> {t.problem.consequenceText}
                 </div>
               </motion.div>
             )}
@@ -172,7 +153,7 @@ export function ProblemToSystem() {
                 <div className="mb-6 flex items-center justify-between">
                   <div>
                     <span className="inline-block rounded-full bg-teal/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal">
-                      Automated & Integrated
+                      {t.problem.systemBadge}
                     </span>
                     <h3 className="mt-2 text-2xl font-bold text-text-heading">
                       {t.problem.system.title}
@@ -204,7 +185,7 @@ export function ProblemToSystem() {
                 </ul>
 
                 <div className="mt-6 rounded-xl border border-teal/30 bg-teal-950/30 p-4 text-xs text-teal-200/90">
-                  <span className="font-semibold text-teal">Outcome:</span> Zero lost customer leads, 24/7 autonomous WhatsApp responses, custom CRM tracking, and total executive visibility into daily operations.
+                  <span className="font-semibold text-teal">{t.problem.outcomeLabel}</span> {t.problem.outcomeText}
                 </div>
               </motion.div>
             )}
@@ -215,20 +196,21 @@ export function ProblemToSystem() {
         <div className="mt-14 rounded-3xl border border-border-subtle bg-gradient-to-b from-indigo/50 via-indigo/20 to-ink p-6 sm:p-10 backdrop-blur-md shadow-2xl">
           <div className="mb-8 text-center">
             <span className="inline-block rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-400">
-              Real-World Scale & Reliability
+              {t.problem.scaleBadge}
             </span>
             <h4 className="mt-3 text-2xl font-bold text-text-heading sm:text-3xl font-[var(--font-heading)]">
-              Built for real business scale — from local clinics to 700,000+ records
+              {t.problem.scaleTitle}
             </h4>
             <p className="mt-2 text-sm text-text-muted max-w-2xl mx-auto">
-              Whether you are a diagnostic lab handling 100 daily tests or a multi-branch network with hundreds of thousands of members, our custom software keeps operations instant, accurate, and completely automated.
+              {t.problem.scaleDesc}
             </p>
           </div>
 
           {/* 3 Core Guarantees */}
           <div className="grid gap-6 sm:grid-cols-3">
-            {operationalGuarantees.map((item, idx) => {
-              const Icon = item.icon;
+            {t.problem.guarantees.map((item, idx) => {
+              const Icon = guaranteeIcons[idx] || Zap;
+              const color = guaranteeColors[idx] || guaranteeColors[0];
               return (
                 <div
                   key={idx}
@@ -236,10 +218,10 @@ export function ProblemToSystem() {
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-4">
-                      <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${item.iconColor}`}>
+                      <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${color.icon}`}>
                         <Icon className="h-5 w-5" />
                       </div>
-                      <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold tracking-wide ${item.badgeColor}`}>
+                      <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold tracking-wide ${color.badge}`}>
                         {item.badge}
                       </span>
                     </div>
@@ -268,74 +250,43 @@ export function ProblemToSystem() {
                 <div className="flex items-center gap-2">
                   <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="text-[11px] font-mono uppercase tracking-widest text-amber font-semibold">
-                    Live Production Benchmark · Multi-Branch Scale
+                    {t.problem.benchmarkBadge}
                   </span>
                 </div>
                 <h5 className="mt-1.5 text-lg sm:text-xl font-bold text-white font-[var(--font-heading)]">
-                  Automating Operations for 700,000+ Active Members Across All Regional Branches
+                  {t.problem.benchmarkTitle}
                 </h5>
                 <p className="mt-1 text-xs text-text-muted max-w-2xl">
-                  A look at the actual custom infrastructure we built and manage for high-capacity community networks — proving our systems handle massive data volume, AI personalization, and daily automation flawlessly.
+                  {t.problem.benchmarkDesc}
                 </p>
               </div>
               <div className="shrink-0 flex items-center gap-2 rounded-xl bg-amber/10 border border-amber/20 px-3.5 py-2 text-right">
                 <Users className="h-4 w-4 text-amber" />
-                <span className="text-xs font-bold text-amber font-mono">700K+ Active Profiles</span>
+                <span className="text-xs font-bold text-amber font-mono">{t.problem.activeProfiles}</span>
               </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {/* Highlight 1: Daily WhatsApp Engine */}
-              <div className="rounded-xl border border-white/[0.06] bg-ink-light/40 p-4 transition-all duration-200 hover:border-emerald-500/30 hover:bg-ink-light/70">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 mb-3">
-                  <Send className="h-4 w-4" />
-                </div>
-                <h6 className="text-xs font-bold text-white mb-1.5">
-                  Automated Daily Content Broadcasts
-                </h6>
-                <p className="text-[11px] text-text-muted leading-relaxed">
-                  High-throughput WhatsApp automation delivering daily morning verses, announcements, and messages to hundreds of thousands of members simultaneously without downtime.
-                </p>
-              </div>
-
-              {/* Highlight 2: AI Avatar & Voice Cloning */}
-              <div className="rounded-xl border border-white/[0.06] bg-ink-light/40 p-4 transition-all duration-200 hover:border-sky-500/30 hover:bg-ink-light/70">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-sky-500/10 text-sky-400 mb-3">
-                  <Sparkles className="h-4 w-4" />
-                </div>
-                <h6 className="text-xs font-bold text-white mb-1.5">
-                  AI Avatar & Voice-Cloned Wishes
-                </h6>
-                <p className="text-[11px] text-text-muted leading-relaxed">
-                  Automated birthday pipeline using cloned leadership voice and AI avatar to generate personalized birthday greetings sent directly to celebrating members every morning.
-                </p>
-              </div>
-
-              {/* Highlight 3: Weekly Event & Multi-Branch Sync */}
-              <div className="rounded-xl border border-white/[0.06] bg-ink-light/40 p-4 transition-all duration-200 hover:border-amber/30 hover:bg-ink-light/70">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber/10 text-amber mb-3">
-                  <Calendar className="h-4 w-4" />
-                </div>
-                <h6 className="text-xs font-bold text-white mb-1.5">
-                  Weekly Services & Branch Sync
-                </h6>
-                <p className="text-[11px] text-text-muted leading-relaxed">
-                  End-to-end automation of weekly service attendance, multi-branch data synchronization, seat reservations, and operational logistical workflows across all branches.
-                </p>
-              </div>
-
-              {/* Highlight 4: Months of Follow-up Queues */}
-              <div className="rounded-xl border border-white/[0.06] bg-ink-light/40 p-4 transition-all duration-200 hover:border-purple-500/30 hover:bg-ink-light/70">
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-purple-500/10 text-purple-400 mb-3">
-                  <HeartHandshake className="h-4 w-4" />
-                </div>
-                <h6 className="text-xs font-bold text-white mb-1.5">
-                  Months of Follow-up & Care Queues
-                </h6>
-                <p className="text-[11px] text-text-muted leading-relaxed">
-                  Intelligent CRM maintaining months of historical member follow-up data, automated care inquiries, prayer request routing, and lifecycle milestone tracking.
-                </p>
-              </div>
+              {t.problem.benchmarkFeatures.map((feat, idx) => {
+                const Icon = benchmarkIcons[idx] || Send;
+                const style = benchmarkColors[idx] || benchmarkColors[0];
+                return (
+                  <div
+                    key={idx}
+                    className={`rounded-xl border border-white/[0.06] bg-ink-light/40 p-4 transition-all duration-200 ${style.border} hover:bg-ink-light/70`}
+                  >
+                    <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${style.icon} mb-3`}>
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <h6 className="text-xs font-bold text-white mb-1.5">
+                      {feat.title}
+                    </h6>
+                    <p className="text-[11px] text-text-muted leading-relaxed">
+                      {feat.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
