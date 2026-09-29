@@ -6,6 +6,7 @@ import { useDeviceCapability } from '@/hooks/useDeviceCapability';
 import { LivingWorkflowFallback } from '@/components/three/LivingWorkflowFallback';
 import { motion } from 'framer-motion';
 import { ArrowDown, MessageCircle, Sparkles, Shield, Zap, Layers } from 'lucide-react';
+import { WHATSAPP_NUMBER } from '@/lib/constants';
 
 // Lazy-load the 3D scene — only on capable devices
 const LivingWorkflow = dynamic(
@@ -155,7 +156,7 @@ export function Hero() {
           </a>
 
           <a
-            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ''}`}
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello Mathru Labs! I want to explore an AI OS and custom system for my business.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-8 py-4 text-sm font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:border-[#00D26A]/50 hover:bg-[#00D26A]/15 hover:text-[#00D26A] active:scale-[0.98]"

@@ -21,5 +21,5 @@ export const NAV_ITEMS: { key: string; sectionId: SectionId }[] = [
   { key: 'contact', sectionId: SECTION_IDS.contact },
 ];
 
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '';
+export const WHATSAPP_NUMBER = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919704506779').replace(/\D/g, '');
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mathrulabs.com';
