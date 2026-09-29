@@ -6,30 +6,43 @@ import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SECTION_IDS } from '@/lib/constants';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Zap, ShieldCheck, Database } from 'lucide-react';
 
 export function ProblemToSystem() {
   const { t } = useLanguage();
   const [activeView, setActiveView] = useState<'both' | 'chaos' | 'system'>('both');
 
-  // Target architectural outcomes (engineering benchmarks we design systems to hit, not fake retrospective client results)
-  const targetOutcomes = [
+  // Clear, human-understandable guarantees backed by real engineering and high-volume scale
+  const operationalGuarantees = [
     {
-      category: 'Customer Response SLA',
-      target: '< 30 Seconds',
-      description: 'Immediate 24/7 automated acknowledgment, triage & FAQ handling on WhatsApp & Web.',
-      status: 'Target SLA',
+      title: 'Instant 24/7 Response',
+      highlight: '< 30 Seconds',
+      badge: 'Speed Guarantee',
+      badgeColor: 'text-sky-400 bg-sky-500/10 border-sky-500/20',
+      icon: Zap,
+      iconColor: 'text-sky-400 bg-sky-500/10',
+      description:
+        'Your customers never wait. Inquiries on WhatsApp and web are answered, triaged, and booked automatically — day or night.',
     },
     {
-      category: 'Data Integrity & Accuracy',
-      target: 'Zero Manual Re-Entry',
-      description: 'Strict schema validation rules and direct system sync eliminate copy-paste human error.',
-      status: 'Design Standard',
+      title: 'Zero Lost Records & Leaks',
+      highlight: '100% Accurate Data',
+      badge: 'Reliability',
+      badgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
+      icon: ShieldCheck,
+      iconColor: 'text-emerald-400 bg-emerald-500/10',
+      description:
+        'Stops human typing mistakes and scattered paper registers. Orders, patient records, and bills sync directly into one unified database.',
     },
     {
-      category: 'Operational Follow-ups',
-      target: '100% Scheduled Delivery',
-      description: 'Automated background queues handle client reminders, report alerts & billing dispatches on time.',
-      status: 'System Target',
+      title: 'Battle-Tested at Scale',
+      highlight: '700,000+ Records Handled',
+      badge: 'High-Volume Scale',
+      badgeColor: 'text-amber bg-amber/10 border-amber/20',
+      icon: Database,
+      iconColor: 'text-amber bg-amber/10',
+      description:
+        'Not an experiment. Our automation engines already power large-scale community organizations managing 7 Lakh+ active member records and daily automated follow-ups.',
     },
   ];
 
@@ -189,38 +202,53 @@ export function ProblemToSystem() {
           </AnimatePresence>
         </div>
 
-        {/* Target Outcomes / What We Engineer For */}
-        <div className="mt-12 rounded-2xl border border-border-subtle bg-indigo/30 p-6 sm:p-8 backdrop-blur-sm">
-          <div className="mb-6 text-center">
-            <span className="inline-block rounded-full bg-teal/10 border border-teal/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-teal">
-              Target Outcomes · What We Aim For
+        {/* Battle-Tested Scale & Core Guarantees */}
+        <div className="mt-12 rounded-2xl border border-border-subtle bg-gradient-to-b from-indigo/40 via-indigo/20 to-ink p-6 sm:p-8 backdrop-blur-sm shadow-xl">
+          <div className="mb-8 text-center">
+            <span className="inline-block rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-400">
+              Real-World Scale & Reliability
             </span>
-            <p className="mt-2 text-xs text-text-muted max-w-xl mx-auto">
-              Measurable architectural benchmarks we design every custom system to achieve — clear engineering targets, not retrospective marketing claims.
+            <h4 className="mt-3 text-xl font-bold text-text-heading sm:text-2xl">
+              Built for real business scale — from local clinics to 700,000+ records
+            </h4>
+            <p className="mt-2 text-sm text-text-muted max-w-2xl mx-auto">
+              Whether you are a diagnostic lab handling 100 daily tests or an organization with hundreds of thousands of members, our custom software keeps operations instant, accurate, and completely automated.
             </p>
           </div>
+
           <div className="grid gap-6 sm:grid-cols-3">
-            {targetOutcomes.map((item, idx) => (
-              <div
-                key={idx}
-                className="group relative rounded-xl border border-border-subtle/60 bg-ink-light/50 p-5 text-left transition-all duration-200 hover:border-teal/30 hover:bg-ink-light/70"
-              >
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-[11px] font-mono font-medium text-text-muted">
-                    {item.category}
-                  </span>
-                  <span className="rounded-full bg-teal/10 px-2 py-0.5 text-[10px] font-semibold text-teal">
-                    {item.status}
-                  </span>
+            {operationalGuarantees.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="group relative flex flex-col justify-between rounded-xl border border-border-subtle/70 bg-ink-light/50 p-6 text-left transition-all duration-300 hover:border-border-subtle hover:bg-ink-light/80 hover:shadow-lg"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-4">
+                      <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${item.iconColor}`}>
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold tracking-wide ${item.badgeColor}`}>
+                        {item.badge}
+                      </span>
+                    </div>
+
+                    <div className="text-2xl font-bold tracking-tight text-white mb-1 font-[var(--font-heading)]">
+                      {item.highlight}
+                    </div>
+
+                    <h5 className="text-sm font-semibold text-text-soft mb-2">
+                      {item.title}
+                    </h5>
+
+                    <p className="text-xs text-text-muted leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-lg font-bold tracking-tight text-white mb-1.5">
-                  {item.target}
-                </div>
-                <p className="text-xs text-text-muted leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
