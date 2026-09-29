@@ -53,25 +53,25 @@ export function Hero() {
       {/* 1. Deep Multi-Layered Atmospheric Lighting Aurora (Mathru Brand Palette) */}
       <div className="absolute inset-0 -z-30 bg-[#070B14]" />
       
-      {/* Radiant Top Glow Spotlight (Electric Blue & Cyan) */}
+      {/* Radiant Atmospheric Top Glow Wash (Electric Blue & Cyan) — smooth non-circular fade */}
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 -z-20 h-[500px] w-[800px] -translate-x-1/2 rounded-full opacity-40 blur-[130px]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[450px] opacity-25"
         style={{
-          background: 'radial-gradient(circle, #0066FF 0%, #00D2FF 40%, transparent 70%)',
+          background: 'radial-gradient(ellipse 80% 50% at 50% -10%, #0066FF 0%, #00D2FF 35%, transparent 70%)',
         }}
       />
 
-      {/* Emerald & Sunset Orange Side Flares */}
+      {/* Emerald & Sunset Orange Side Ambient Washes — edge-anchored ellipses, no center hotspot */}
       <div
-        className="pointer-events-none absolute top-1/4 -left-40 -z-20 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]"
+        className="pointer-events-none absolute top-10 left-0 -z-20 h-[500px] w-[500px] opacity-15"
         style={{
-          background: 'radial-gradient(circle, #00D26A 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at 0% 40%, #00D26A 0%, transparent 65%)',
         }}
       />
       <div
-        className="pointer-events-none absolute top-1/3 -right-40 -z-20 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]"
+        className="pointer-events-none absolute top-10 right-0 -z-20 h-[500px] w-[500px] opacity-15"
         style={{
-          background: 'radial-gradient(circle, #FF6B00 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at 100% 40%, #FF6B00 0%, transparent 65%)',
         }}
       />
 

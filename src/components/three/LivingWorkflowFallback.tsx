@@ -20,17 +20,9 @@ interface EdgeDef {
   delay: number;
 }
 
-interface PulseDef {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-  delay: number;
-  duration: number;
-}
 
 export function LivingWorkflowFallback() {
-  const { nodes, edges, pulses } = useMemo(() => {
+  const { nodes, edges } = useMemo(() => {
     // Outer perimeter positions leaving center 100% open for text clarity
     const nodePositions: [number, number][] = [
       [100, 110], // Left Top
@@ -75,21 +67,7 @@ export function LivingWorkflowFallback() {
       delay: i * 0.08,
     }));
 
-    // Create animated pulses along some edges
-    const pulseEdges = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const pulses: PulseDef[] = pulseEdges.map((edgeIdx, i) => {
-      const [from, to] = edgePairs[edgeIdx];
-      return {
-        x1: nodePositions[from][0],
-        y1: nodePositions[from][1],
-        x2: nodePositions[to][0],
-        y2: nodePositions[to][1],
-        delay: i * 0.4,
-        duration: 2 + Math.random(),
-      };
-    });
-
-    return { nodes, edges, pulses };
+    return { nodes, edges };
   }, []);
 
   return (
@@ -103,15 +81,6 @@ export function LivingWorkflowFallback() {
           {/* Glow filter */}
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-
-          {/* Pulse glow */}
-          <filter id="pulseGlow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="6" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -152,42 +121,6 @@ export function LivingWorkflowFallback() {
           ))}
         </g>
 
-        {/* Flowing data pulses */}
-        <g className="svg-pulses">
-          {pulses.map((pulse, i) => (
-            <circle
-              key={`pulse-${i}`}
-              cx={pulse.x1}
-              cy={pulse.y1}
-              r="3"
-              fill="#2DD4BF"
-              filter="url(#pulseGlow)"
-              opacity="0"
-            >
-              <animateMotion
-                dur={`${pulse.duration}s`}
-                begin={`${pulse.delay}s`}
-                repeatCount="indefinite"
-                path={`M${pulse.x1},${pulse.y1} L${pulse.x2},${pulse.y2}`}
-              />
-              <animate
-                attributeName="opacity"
-                values="0;0.8;0.8;0"
-                keyTimes="0;0.1;0.9;1"
-                dur={`${pulse.duration}s`}
-                begin={`${pulse.delay}s`}
-                repeatCount="indefinite"
-              />
-              <animate
-                attributeName="r"
-                values="2;4;2"
-                dur={`${pulse.duration}s`}
-                begin={`${pulse.delay}s`}
-                repeatCount="indefinite"
-              />
-            </circle>
-          ))}
-        </g>
 
         {/* Nodes */}
         <g className="svg-nodes" filter="url(#glow)">
