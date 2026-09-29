@@ -53,55 +53,36 @@ export function Hero() {
       {/* 1. Deep Multi-Layered Atmospheric Lighting Aurora (Mathru Brand Palette) */}
       <div className="absolute inset-0 -z-30 bg-[#070B14]" />
       
-      {/* Radiant Atmospheric Top Glow Wash (Electric Blue & Cyan) — smooth non-circular spotlight */}
+      {/* Primary Signature Aurora Wash — Full-coverage percentage-based brand gradients */}
       <div
-        className="pointer-events-none absolute -top-36 left-1/2 -z-20 h-[550px] w-[950px] -translate-x-1/2 rounded-full opacity-40 blur-[130px]"
+        className="pointer-events-none absolute inset-0 -z-20"
         style={{
-          background: 'radial-gradient(ellipse at 50% 30%, #0066FF 0%, #00D2FF 45%, transparent 75%)',
+          background: [
+            'radial-gradient(ellipse 85% 55% at 50% -5%, rgba(0, 102, 255, 0.5) 0%, rgba(0, 210, 255, 0.3) 35%, transparent 70%)',
+            'radial-gradient(ellipse 65% 70% at 15% 35%, rgba(0, 210, 106, 0.4) 0%, rgba(0, 210, 255, 0.18) 45%, transparent 75%)',
+            'radial-gradient(ellipse 65% 70% at 85% 38%, rgba(255, 107, 0, 0.4) 0%, rgba(255, 160, 64, 0.18) 45%, transparent 75%)',
+            'radial-gradient(ellipse 75% 55% at 50% 45%, rgba(0, 112, 243, 0.22) 0%, rgba(0, 210, 106, 0.08) 40%, rgba(255, 107, 0, 0.08) 65%, transparent 80%)',
+          ].join(', '),
         }}
       />
 
-      {/* Emerald Green Hero Left Wash — positioned directly behind the left half of the headline */}
+      {/* Atmospheric Mid-Field Glow Spots for Volumetric Depth */}
       <div
-        className="pointer-events-none absolute top-1/4 left-1/2 -z-20 h-[550px] w-[650px] -translate-x-[480px] sm:-translate-x-[440px] rounded-full opacity-35 blur-[125px]"
+        className="pointer-events-none absolute -top-24 left-1/2 -z-20 h-[500px] w-[850px] -translate-x-1/2 rounded-full opacity-60 blur-[90px]"
         style={{
-          background: 'radial-gradient(ellipse, #00D26A 0%, rgba(0,210,255,0.4) 35%, transparent 70%)',
-        }}
-      />
-
-      {/* Sunset Orange Hero Right Wash — positioned directly behind the right half of the headline & CTA */}
-      <div
-        className="pointer-events-none absolute top-1/3 left-1/2 -z-20 h-[550px] w-[650px] translate-x-[60px] sm:translate-x-[80px] rounded-full opacity-30 blur-[125px]"
-        style={{
-          background: 'radial-gradient(ellipse, #FF6B00 0%, rgba(255,160,64,0.3) 35%, transparent 70%)',
-        }}
-      />
-
-      {/* Edge Ambient Glows for Ultra-Wide Screens */}
-      <div
-        className="pointer-events-none absolute top-10 left-0 -z-20 h-[600px] w-[500px] opacity-20 blur-[140px]"
-        style={{
-          background: 'radial-gradient(ellipse at 0% 40%, #00D26A 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at 50% 25%, #0066FF 0%, #00D2FF 50%, transparent 80%)',
         }}
       />
       <div
-        className="pointer-events-none absolute top-10 right-0 -z-20 h-[600px] w-[500px] opacity-20 blur-[140px]"
+        className="pointer-events-none absolute top-16 -left-20 -z-20 h-[650px] w-[650px] rounded-full opacity-50 blur-[85px]"
         style={{
-          background: 'radial-gradient(ellipse at 100% 40%, #FF6B00 0%, transparent 70%)',
-        }}
-      />
-
-      {/* Central Atmospheric Gradient Glow — the warm radiant backdrop behind hero text */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-20 opacity-30"
-        style={{
-          background: 'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(0,102,255,0.3) 0%, rgba(0,210,255,0.15) 30%, rgba(0,210,106,0.08) 55%, transparent 80%)',
+          background: 'radial-gradient(circle, #00D26A 0%, rgba(0,210,255,0.4) 40%, transparent 75%)',
         }}
       />
       <div
-        className="pointer-events-none absolute inset-0 -z-20 opacity-20"
+        className="pointer-events-none absolute top-16 -right-20 -z-20 h-[650px] w-[650px] rounded-full opacity-50 blur-[85px]"
         style={{
-          background: 'radial-gradient(ellipse 55% 45% at 50% 45%, rgba(255,107,0,0.2) 0%, rgba(255,107,0,0.05) 40%, transparent 70%)',
+          background: 'radial-gradient(circle, #FF6B00 0%, rgba(255,160,64,0.4) 40%, transparent 75%)',
         }}
       />
 
