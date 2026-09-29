@@ -88,6 +88,7 @@ export function Contact() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: data.get('name'),
+          email: data.get('email'),
           business: data.get('business'),
           phone: data.get('phone'),
           message: data.get('message'),
@@ -136,6 +137,20 @@ export function Contact() {
                 id="contact-name"
                 name="name"
                 required
+                className="w-full rounded-xl border border-border-subtle bg-indigo/30 px-4 py-3 text-sm text-text-soft placeholder-text-muted/50 transition-colors focus:border-amber/50 focus:outline-none focus:ring-1 focus:ring-amber/50"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-text-soft">
+                {t.contact.form.email}
+              </label>
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                required
+                placeholder={t.contact.form.emailPlaceholder}
                 className="w-full rounded-xl border border-border-subtle bg-indigo/30 px-4 py-3 text-sm text-text-soft placeholder-text-muted/50 transition-colors focus:border-amber/50 focus:outline-none focus:ring-1 focus:ring-amber/50"
               />
             </div>

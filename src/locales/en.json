@@ -417,12 +417,15 @@
     "description": "Tell us about your business, the manual tasks slowing your team down, or the custom software/CRM you want to build. We'll get back to you within 24 hours.",
     "form": {
       "name": "Your name",
+      "email": "Email address",
+      "emailPlaceholder": "e.g. rajesh@company.com",
       "business": "Business industry / type",
-      "phone": "Phone number",
+      "phone": "Phone number / WhatsApp",
+      "phonePlaceholder": "e.g. +91 98765 43210",
       "message": "What tool, CRM, or software do you want to build?",
       "submit": "Send Message",
       "sending": "Sending...",
-      "success": "Message sent! Our engineering team will be in touch within 24 hours.",
+      "success": "Message sent! We have emailed you a confirmation and our engineering team will be in touch within 24 hours.",
       "error": "Something went wrong. Please try WhatsApp instead."
     },
     "whatsapp": "Chat on WhatsApp",
