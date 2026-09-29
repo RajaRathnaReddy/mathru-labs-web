@@ -15,7 +15,17 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
+      prevent: (node) => {
+        return (
+          Boolean(node.closest('[data-lenis-prevent]')) ||
+          Boolean(node.closest('[role="dialog"]')) ||
+          Boolean(node.closest('.lenis-prevent'))
+        );
+      },
     });
+
+    // Expose lenis instance on window for modal stop/start control
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -25,6 +35,7 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     requestAnimationFrame(raf);
 
     return () => {
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
       lenis.destroy();
     };
   }, []);

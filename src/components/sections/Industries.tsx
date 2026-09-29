@@ -155,6 +155,33 @@ export function Industries() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeIndustry]);
 
+  // Lock body scroll, pause Lenis, and isolate wheel events when modal is open
+  useEffect(() => {
+    if (!activeIndustry) return;
+
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('overflow-hidden');
+
+    const lenis = (window as unknown as { __lenis?: { stop: () => void; start: () => void } }).__lenis;
+    lenis?.stop();
+
+    const handleWindowWheel = (e: WheelEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target?.closest('.modal-scroll-body')) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('wheel', handleWindowWheel, { passive: false });
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.classList.remove('overflow-hidden');
+      lenis?.start();
+      window.removeEventListener('wheel', handleWindowWheel);
+    };
+  }, [activeIndustry]);
+
   // Filtered industries
   const filteredIndustries = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
@@ -525,7 +552,9 @@ export function Industries() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-industry-title"
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+            data-lenis-prevent
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto overscroll-contain"
+            onWheel={(e) => e.stopPropagation()}
           >
             {/* Backdrop */}
             <motion.div
@@ -542,9 +571,20 @@ export function Industries() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ duration: 0.25 }}
-              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-border-subtle bg-ink-light p-6 sm:p-8 shadow-2xl shadow-indigo/40 z-10 my-8"
+              data-lenis-prevent="true"
+              className="modal-scroll-body relative w-full max-w-3xl max-h-[90vh] overflow-y-auto overscroll-contain rounded-3xl border border-border-subtle bg-ink-light p-6 sm:p-8 shadow-2xl shadow-indigo/40 z-10 my-8"
               style={{
                 borderColor: `hsla(${activeIndustry.accentHue}, 85%, 55%, 0.35)`,
+                overscrollBehavior: 'contain',
+              }}
+              onWheel={(e) => {
+                e.stopPropagation();
+                const el = e.currentTarget;
+                const isTop = el.scrollTop <= 0 && e.deltaY < 0;
+                const isBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1 && e.deltaY > 0;
+                if (isTop || isBottom) {
+                  e.preventDefault();
+                }
               }}
             >
               {/* Close Button */}
