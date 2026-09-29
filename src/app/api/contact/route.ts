@@ -171,10 +171,16 @@ export async function POST(request: NextRequest) {
                       <div style="background-color: #fafafa; border: 1px solid #e4e4e7; border-left: 3px solid #0066FF; border-radius: 8px; padding: 16px 18px; font-size: 14px; line-height: 1.7; color: #27272a; white-space: pre-wrap;">${message}</div>
                     </div>
 
-                    <!-- SLA Reminder -->
-                    <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 14px 16px; margin-bottom: 28px;">
-                      <div style="font-size: 13px; color: #1e40af; line-height: 1.5;">
-                        <strong>Response Protocol:</strong> Contact within 2 hours. Review workflow and offer a 2-week live working pilot demonstration.
+                    <!-- SLA & Action Protocol -->
+                    <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px 18px; margin-bottom: 24px;">
+                      <div style="font-size: 13px; font-weight: 700; color: #1e40af; margin-bottom: 6px;">
+                        🎯 Rapid Response & Lead Protocol:
+                      </div>
+                      <div style="font-size: 12px; color: #1e3a8a; line-height: 1.6;">
+                        1. <strong>Target Contact Window:</strong> Within 2 hours via WhatsApp.<br />
+                        2. <strong>Reference Industry:</strong> Review <em>${business}</em> workflows on <a href="https://mathrulabs.com/#industries" style="color: #1d4ed8; text-decoration: underline;">mathrulabs.com/#industries</a>.<br />
+                        3. <strong>Primary Offer:</strong> 2-week live working pilot on client VPC or local premise.<br />
+                        4. <strong>Data Sovereignty Reassurance:</strong> Zero third-party training, 100% private data isolation.
                       </div>
                     </div>
 
@@ -331,7 +337,7 @@ export async function POST(request: NextRequest) {
 
                     <!-- What Happens Next -->
                     <div style="margin-bottom: 32px;">
-                      <div style="font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 18px;">What Happens Next</div>
+                      <div style="font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 18px;">Your 3-Step Pilot Onboarding Roadmap</div>
 
                       <!-- Step 1 -->
                       <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 18px;">
@@ -340,8 +346,8 @@ export async function POST(request: NextRequest) {
                             <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px;">1</div>
                           </td>
                           <td style="padding-left: 12px;">
-                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Workflow & Bottleneck Analysis</div>
-                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">Our engineering team studies your current operations to identify where custom software, AI agents, and automation can have the highest ROI impact.</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Workflow & Bottleneck Deconstruction (Within 12 Hours)</div>
+                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">Our engineering team analyzes your operational workflow and requirement specifications to determine where AI agents, automation, and custom tooling will yield the greatest operational leverage.</div>
                           </td>
                         </tr>
                       </table>
@@ -353,8 +359,8 @@ export async function POST(request: NextRequest) {
                             <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px;">2</div>
                           </td>
                           <td style="padding-left: 12px;">
-                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Custom Architecture & Pilot Plan</div>
-                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">We prepare a tailored solution blueprint with a <strong style="color: #18181b;">2-week live working pilot</strong> timeline, tech stack recommendation, and clear ROI projection for your business.</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Custom Solution Architecture & 2-Week Pilot Plan</div>
+                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">We formulate a custom technical architecture tailored to <strong style="color: #18181b;">${business}</strong>, with database schema, WhatsApp/CRM workflows, and a concrete <strong style="color: #18181b;">2-Week Working Pilot</strong> implementation roadmap.</div>
                           </td>
                         </tr>
                       </table>
@@ -366,39 +372,80 @@ export async function POST(request: NextRequest) {
                             <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #fff7ed; border: 1px solid #fed7aa; color: #c2410c; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px;">3</div>
                           </td>
                           <td style="padding-left: 12px;">
-                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Direct Consultation & Live Demo</div>
-                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">A dedicated solution architect will reach out to you within <strong style="color: #18181b;">24 business hours</strong> via WhatsApp or phone to walk you through the proposal and demonstrate our approach.</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Direct Solution Architect Walkthrough & Live Demo</div>
+                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">A dedicated founding solution architect will reach out to you within <strong style="color: #18181b;">24 business hours</strong> via WhatsApp or phone to walk you through the proposal and demonstrate a live simulation tailored to your business.</div>
                           </td>
                         </tr>
                       </table>
                     </div>
 
-                    <!-- CTA -->
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 32px;">
+                    <!-- What We Build Section -->
+                    <div style="margin-bottom: 32px;">
+                      <div style="font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px;">Mathru Labs Solution Capabilities</div>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #fafafa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 16px 18px;">
+                        <tr>
+                          <td style="padding-bottom: 12px;">
+                            <div style="font-size: 13px; font-weight: 700; color: #18181b; margin-bottom: 2px;">⚡ Custom CRMs & Operating Dashboards</div>
+                            <div style="font-size: 12px; color: #71717a; line-height: 1.5;">Tailored to your exact staff roles, multi-branch visibility, client records, and automated invoicing.</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="padding-bottom: 12px;">
+                            <div style="font-size: 13px; font-weight: 700; color: #18181b; margin-bottom: 2px;">💬 Autonomous WhatsApp & Omnichannel Engines</div>
+                            <div style="font-size: 12px; color: #71717a; line-height: 1.5;">24/7 instant client replies, appointment booking, automated PDF bills, and payment reminders.</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="padding-bottom: 12px;">
+                            <div style="font-size: 13px; font-weight: 700; color: #18181b; margin-bottom: 2px;">🤖 Domain-Trained AI Agents & Copilots</div>
+                            <div style="font-size: 12px; color: #71717a; line-height: 1.5;">Private internal assistants trained exclusively on your SOPs, pricing catalogs, and customer inquiries.</div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div style="font-size: 13px; font-weight: 700; color: #18181b; margin-bottom: 2px;">🔄 Legacy Software & ERP Integration</div>
+                            <div style="font-size: 12px; color: #71717a; line-height: 1.5;">Seamless two-way sync with Tally Prime, Zoho Books, SAP, custom SQL databases, and Excel sheets.</div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <!-- Fast Track WhatsApp CTA -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 30px;">
                       <tr>
                         <td align="center">
                           <div style="background-color: #fafafa; border: 1px solid #e4e4e7; border-radius: 10px; padding: 22px 24px; text-align: center;">
                             <div style="font-size: 15px; font-weight: 700; color: #18181b; margin-bottom: 6px;">
-                              Need immediate assistance?
+                              Prefer to connect immediately?
                             </div>
                             <div style="font-size: 13px; color: #71717a; margin-bottom: 16px; line-height: 1.5;">
-                              Connect directly with our founding engineer on WhatsApp for a zero-wait response.
+                              Connect directly with our Founding Engineer on WhatsApp for an instant response.
                             </div>
                             <a href="https://wa.me/${WHATSAPP_PHONE}?text=Hello%20Mathru%20Labs!%20I%20just%20submitted%20an%20inquiry%20(Ref:%20${referenceId})%20for%20${encodeURIComponent(business)}%20and%20would%20like%20to%20connect."
                                style="display: inline-block; background-color: #18181b; color: #ffffff; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none;">
-                              Chat with us on WhatsApp
+                              Chat with us on WhatsApp →
                             </a>
                           </div>
                         </td>
                       </tr>
                     </table>
 
+                    <!-- Explore Systems Box -->
+                    <div style="margin-bottom: 28px; padding: 14px 16px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+                      <div style="font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 4px;">Explore Live Systems While You Wait:</div>
+                      <div style="font-size: 12px; color: #64748b; line-height: 1.5;">
+                        See interactive workflow simulations for 25+ industries at 
+                        <a href="https://mathrulabs.com/#industries" style="color: #0066FF; text-decoration: underline; font-weight: 600;">mathrulabs.com/#industries</a> · 
+                        <a href="https://mathrulabs.com/#pilot" style="color: #0066FF; text-decoration: underline; font-weight: 600;">2-Week Pilot Details</a>
+                      </div>
+                    </div>
+
                     <!-- Trust Signals -->
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 32px;">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 28px;">
                       <tr>
-                        <td align="center" style="font-size: 12px; color: #71717a; padding: 4px 0;">100% Data Confidentiality</td>
-                        <td align="center" style="font-size: 12px; color: #71717a; padding: 4px 0;">Zero Third-Party Sharing</td>
-                        <td align="center" style="font-size: 12px; color: #71717a; padding: 4px 0;">On-Prem / Private Cloud</td>
+                        <td align="center" style="font-size: 12px; color: #71717a; padding: 4px 6px; border-right: 1px solid #e4e4e7;">🛡️ 100% Data Confidentiality</td>
+                        <td align="center" style="font-size: 12px; color: #71717a; padding: 4px 6px; border-right: 1px solid #e4e4e7;">🔒 Zero Public AI Training</td>
+                        <td align="center" style="font-size: 12px; color: #71717a; padding: 4px 6px;">⚡ On-Prem / Private Cloud</td>
                       </tr>
                     </table>
 

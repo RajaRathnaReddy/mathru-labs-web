@@ -53,39 +53,55 @@ export function Hero() {
       {/* 1. Deep Multi-Layered Atmospheric Lighting Aurora (Mathru Brand Palette) */}
       <div className="absolute inset-0 -z-30 bg-[#070B14]" />
       
-      {/* Radiant Atmospheric Top Glow Wash (Electric Blue & Cyan) — smooth non-circular fade */}
+      {/* Radiant Atmospheric Top Glow Wash (Electric Blue & Cyan) — smooth non-circular spotlight */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[450px] opacity-25"
+        className="pointer-events-none absolute -top-36 left-1/2 -z-20 h-[550px] w-[950px] -translate-x-1/2 rounded-full opacity-40 blur-[130px]"
         style={{
-          background: 'radial-gradient(ellipse 80% 50% at 50% -10%, #0066FF 0%, #00D2FF 35%, transparent 70%)',
+          background: 'radial-gradient(ellipse at 50% 30%, #0066FF 0%, #00D2FF 45%, transparent 75%)',
         }}
       />
 
-      {/* Emerald & Sunset Orange Side Ambient Washes — edge-anchored ellipses, no center hotspot */}
+      {/* Emerald Green Hero Left Wash — positioned directly behind the left half of the headline */}
       <div
-        className="pointer-events-none absolute top-10 left-0 -z-20 h-[500px] w-[500px] opacity-15"
+        className="pointer-events-none absolute top-1/4 left-1/2 -z-20 h-[550px] w-[650px] -translate-x-[480px] sm:-translate-x-[440px] rounded-full opacity-35 blur-[125px]"
         style={{
-          background: 'radial-gradient(ellipse at 0% 40%, #00D26A 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse, #00D26A 0%, rgba(0,210,255,0.4) 35%, transparent 70%)',
+        }}
+      />
+
+      {/* Sunset Orange Hero Right Wash — positioned directly behind the right half of the headline & CTA */}
+      <div
+        className="pointer-events-none absolute top-1/3 left-1/2 -z-20 h-[550px] w-[650px] translate-x-[60px] sm:translate-x-[80px] rounded-full opacity-30 blur-[125px]"
+        style={{
+          background: 'radial-gradient(ellipse, #FF6B00 0%, rgba(255,160,64,0.3) 35%, transparent 70%)',
+        }}
+      />
+
+      {/* Edge Ambient Glows for Ultra-Wide Screens */}
+      <div
+        className="pointer-events-none absolute top-10 left-0 -z-20 h-[600px] w-[500px] opacity-20 blur-[140px]"
+        style={{
+          background: 'radial-gradient(ellipse at 0% 40%, #00D26A 0%, transparent 70%)',
         }}
       />
       <div
-        className="pointer-events-none absolute top-10 right-0 -z-20 h-[500px] w-[500px] opacity-15"
+        className="pointer-events-none absolute top-10 right-0 -z-20 h-[600px] w-[500px] opacity-20 blur-[140px]"
         style={{
-          background: 'radial-gradient(ellipse at 100% 40%, #FF6B00 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse at 100% 40%, #FF6B00 0%, transparent 70%)',
         }}
       />
 
       {/* Central Atmospheric Gradient Glow — the warm radiant backdrop behind hero text */}
       <div
-        className="pointer-events-none absolute inset-0 -z-20 opacity-30 sm:opacity-25"
+        className="pointer-events-none absolute inset-0 -z-20 opacity-30"
         style={{
-          background: 'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(0,102,255,0.35) 0%, rgba(0,210,255,0.15) 30%, rgba(0,210,106,0.08) 55%, transparent 80%)',
+          background: 'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(0,102,255,0.3) 0%, rgba(0,210,255,0.15) 30%, rgba(0,210,106,0.08) 55%, transparent 80%)',
         }}
       />
       <div
-        className="pointer-events-none absolute inset-0 -z-20 opacity-20 sm:opacity-15"
+        className="pointer-events-none absolute inset-0 -z-20 opacity-20"
         style={{
-          background: 'radial-gradient(ellipse 50% 40% at 50% 45%, rgba(255,107,0,0.2) 0%, rgba(255,107,0,0.05) 40%, transparent 70%)',
+          background: 'radial-gradient(ellipse 55% 45% at 50% 45%, rgba(255,107,0,0.2) 0%, rgba(255,107,0,0.05) 40%, transparent 70%)',
         }}
       />
 
@@ -138,8 +154,11 @@ export function Hero() {
           className="text-4xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[76px] leading-[1.08] max-w-5xl mx-auto drop-shadow-md font-[var(--font-heading)]"
         >
           {t.hero.headlineMain}{' '}
-          <span className="bg-gradient-to-r from-[#00D2FF] via-[#00D26A] to-[#FF6B00] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,210,255,0.35)]">
-            {t.hero.headlineGradient}
+          <span className="inline-block bg-gradient-to-r from-[#00D2FF] to-[#00D26A] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,210,255,0.45)]">
+            {(t.hero as any).headlineGradientAi || 'intelligent'}
+          </span>{' '}
+          <span className="inline-block bg-gradient-to-r from-[#FF6B00] via-[#FF8800] to-[#FFA034] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(255,107,0,0.45)]">
+            {(t.hero as any).headlineGradientSystems || 'systems.'}
           </span>
         </motion.h1>
 
