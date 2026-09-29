@@ -4,11 +4,13 @@ import dynamic from 'next/dynamic';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { useDeviceCapability } from '@/hooks/useDeviceCapability';
 import { LivingWorkflowFallback } from '@/components/three/LivingWorkflowFallback';
+import { HeroCommandCockpit } from '@/components/ui/HeroCommandCockpit';
 import { motion } from 'framer-motion';
+import { ArrowDown, MessageCircle, Sparkles, Shield, Zap, Layers } from 'lucide-react';
 
 // Lazy-load the 3D scene — only on capable devices
 const LivingWorkflow = dynamic(
-  () => import('@/components/three/LivingWorkflow').then(mod => ({ default: mod.LivingWorkflow })),
+  () => import('@/components/three/LivingWorkflow').then((mod) => ({ default: mod.LivingWorkflow })),
   {
     ssr: false,
     loading: () => <LivingWorkflowFallback />,
@@ -25,19 +27,19 @@ export function Hero() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
+        staggerChildren: 0.12,
+        delayChildren: 0.2,
       },
     },
   };
 
   const item = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 25 },
     show: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.7,
         ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
       },
     },
@@ -46,143 +48,174 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-28 pb-20 lg:pt-36 lg:pb-28"
     >
-      {/* Background base gradient — deep architectural slate canvas */}
-      <div className="absolute inset-0 bg-[#080C14]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#080C14] via-[#0D1322] to-[#080C14]" />
+      {/* 1. Deep Multi-Layered Atmospheric Lighting Aurora (Mathru Brand Palette) */}
+      <div className="absolute inset-0 -z-30 bg-[#070B14]" />
+      
+      {/* Radiant Top Glow Spotlight (Electric Blue & Cyan) */}
+      <div
+        className="pointer-events-none absolute -top-40 left-1/2 -z-20 h-[500px] w-[800px] -translate-x-1/2 rounded-full opacity-40 blur-[130px]"
+        style={{
+          background: 'radial-gradient(circle, #0066FF 0%, #00D2FF 40%, transparent 70%)',
+        }}
+      />
+
+      {/* Emerald & Sunset Orange Side Flares */}
+      <div
+        className="pointer-events-none absolute top-1/4 -left-40 -z-20 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]"
+        style={{
+          background: 'radial-gradient(circle, #00D26A 0%, transparent 70%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute top-1/3 -right-40 -z-20 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]"
+        style={{
+          background: 'radial-gradient(circle, #FF6B00 0%, transparent 70%)',
+        }}
+      />
+
+      {/* High-Tech Grid Mesh Floor */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 opacity-20"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+          maskImage: 'radial-gradient(ellipse at 50% 40%, black 30%, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(ellipse at 50% 40%, black 30%, transparent 80%)',
+        }}
+      />
 
       {/* Living Workflow — 3D or SVG based on device capability */}
-      {canHandle3D ? <LivingWorkflow /> : <LivingWorkflowFallback />}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-70">
+        {canHandle3D ? <LivingWorkflow /> : <LivingWorkflowFallback />}
+      </div>
 
-      {/* Clean vertical atmospheric gradient for flawless text readability */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-[#080C14]/60 via-transparent to-[#080C14]/90" />
-
-      {/* Content */}
+      {/* Content Container */}
       <motion.div
-        className="relative z-10 mx-auto max-w-5xl px-4 pt-20 text-center sm:px-6 lg:px-8"
+        className="relative z-10 mx-auto w-full max-w-7xl px-4 text-center sm:px-6 lg:px-8"
         variants={prefersReducedMotion ? undefined : container}
         initial={prefersReducedMotion ? undefined : 'hidden'}
         animate={prefersReducedMotion ? undefined : 'show'}
       >
+        {/* Top Badge with " | " dividers matching brand identity */}
         <motion.div variants={prefersReducedMotion ? undefined : item} className="mb-6">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-text-soft bg-white/[0.04] border border-white/10 rounded-full backdrop-blur-md shadow-sm">
+          <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider text-text-soft bg-white/[0.05] border border-white/15 rounded-full backdrop-blur-xl shadow-lg shadow-black/40">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00D26A] opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00D26A]" />
+            </span>
             <span className="text-[#38BDF8]">AI</span>
-            <span className="text-white/30">•</span>
-            <span className="text-white/90">SOFTWARE</span>
-            <span className="text-white/30">•</span>
+            <span className="text-[#0070F3] font-bold mx-0.5 drop-shadow-[0_0_8px_rgba(0,112,243,0.8)]">|</span>
+            <span className="text-white/95">SOFTWARE</span>
+            <span className="text-[#00D26A] font-bold mx-0.5 drop-shadow-[0_0_8px_rgba(0,210,106,0.8)]">|</span>
             <span className="text-[#00D26A]">AUTOMATION</span>
+            <span className="hidden sm:inline text-white/30 font-light">·</span>
+            <span className="hidden sm:inline text-white/60 font-medium lowercase">
+              enterprise operating systems
+            </span>
           </span>
         </motion.div>
 
+        {/* High-Impact Main Headline */}
         <motion.h1
           variants={prefersReducedMotion ? undefined : item}
-          className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] max-w-4xl mx-auto drop-shadow-sm"
+          className="text-4xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[76px] leading-[1.08] max-w-5xl mx-auto drop-shadow-md font-[var(--font-heading)]"
         >
-          {t.hero.headline.includes('intelligent systems') ? (
-            <>
-              {t.hero.headline.split('intelligent systems')[0]}
-              <span className="text-gradient-brand">intelligent systems.</span>
-            </>
-          ) : (
-            t.hero.headline
-          )}
+          We turn manual business work into{' '}
+          <span className="bg-gradient-to-r from-[#00D2FF] via-[#00D26A] to-[#FF6B00] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,210,255,0.35)]">
+            intelligent systems.
+          </span>
         </motion.h1>
 
+        {/* Subtitle */}
         <motion.p
           variants={prefersReducedMotion ? undefined : item}
-          className="mt-6 mx-auto max-w-2xl text-base text-text-muted sm:text-lg lg:text-xl leading-relaxed font-normal"
+          className="mt-6 mx-auto max-w-3xl text-base text-white/75 sm:text-xl leading-relaxed font-normal"
         >
-          {t.hero.subline}
+          Custom AI tools, enterprise-grade CRMs, and autonomous workflow engines built for 
+          <span className="font-semibold text-white"> 25+ industries</span> across India. Zero manual busywork, 100% data sovereignty.
         </motion.p>
 
+        {/* Primary CTA Buttons */}
         <motion.div
           variants={prefersReducedMotion ? undefined : item}
-          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+          className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
-            href="#problem-system"
+            href="#industries"
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById('problem-system')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById('industries')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#FF6600] to-[#FA6400] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#FF6600]/25 transition-all duration-300 hover:shadow-xl hover:shadow-[#FF6600]/40 hover:scale-[1.02] active:scale-[0.98]"
+            className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF6600] to-[#FA6400] px-8 py-4 text-sm font-bold text-white shadow-xl shadow-[#FF6600]/30 transition-all duration-300 hover:shadow-2xl hover:shadow-[#FF6600]/50 hover:scale-[1.03] active:scale-[0.98]"
           >
-            {t.hero.cta1}
-            <svg
-              className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
+            <span>Explore 25 Industry Systems</span>
+            <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
           </a>
 
           <a
             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ''}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-8 py-3.5 text-sm font-semibold text-text-soft backdrop-blur-md transition-all duration-300 hover:border-[#00D26A]/40 hover:bg-[#00D26A]/10 hover:text-[#00D26A] active:scale-[0.98]"
+            className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-8 py-4 text-sm font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:border-[#00D26A]/50 hover:bg-[#00D26A]/15 hover:text-[#00D26A] active:scale-[0.98]"
           >
-            <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            </svg>
-            {t.hero.cta2}
+            <MessageCircle className="h-4 w-4 text-[#00D26A]" />
+            <span>Consult on WhatsApp</span>
           </a>
         </motion.div>
 
-        {/* All-Industry Quick Navigator */}
+        {/* Trust Badges Strip */}
         <motion.div
           variants={prefersReducedMotion ? undefined : item}
-          className="mt-10 flex flex-wrap items-center justify-center gap-2 text-xs"
+          className="mt-8 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-white/60 font-mono"
         >
-          <span className="text-text-muted font-medium mr-1">Tools &amp; CRMs for:</span>
+          <span className="flex items-center gap-1.5">
+            <Shield className="h-3.5 w-3.5 text-[#00D26A]" /> 100% Data Sovereignty (On-Prem / Private Cloud)
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Zap className="h-3.5 w-3.5 text-[#38BDF8]" /> 48-Hour Pilot Deployment
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Layers className="h-3.5 w-3.5 text-[#FF6B00]" /> Multi-Branch Architecture
+          </span>
+        </motion.div>
+
+        {/* 🌟 HERO CENTERPIECE: Live Interactive Neural Cockpit */}
+        <motion.div variants={prefersReducedMotion ? undefined : item}>
+          <HeroCommandCockpit />
+        </motion.div>
+
+        {/* Quick Industry Pills Bar */}
+        <motion.div
+          variants={prefersReducedMotion ? undefined : item}
+          className="mt-12 flex flex-wrap items-center justify-center gap-2 text-xs"
+        >
+          <span className="text-white/40 font-mono font-medium mr-1">Direct Systems For:</span>
           {[
-            'Healthcare & Labs',
-            'Retail & Supermarkets',
-            'Banks & CA Firms',
+            'Hospitals & Clinics',
+            'Diagnostic Labs',
+            'Supermarkets & Retail',
             'Real Estate & Builders',
             'Automobile & EV',
-            'Schools & Coaching',
-            'Logistics & MSME',
+            'Schools & Universities',
+            'Manufacturing & ERP',
           ].map((ind, i) => (
             <a
               key={i}
               href="#industries"
-              className="rounded-full bg-white/[0.04] border border-white/[0.08] px-3 py-1 text-text-soft transition-all duration-200 hover:border-[#0070F3]/40 hover:text-white hover:bg-[#0070F3]/10 active:scale-95"
+              className="rounded-full bg-white/[0.04] border border-white/[0.08] px-3 py-1 text-white/80 transition-all duration-200 hover:border-[#0070F3]/50 hover:text-white hover:bg-[#0070F3]/15 active:scale-95"
             >
               {ind}
             </a>
           ))}
           <a
             href="#industries"
-            className="rounded-full bg-[#FF6600]/15 border border-[#FF6600]/35 px-3 py-1 font-semibold text-[#FF6600] transition-all duration-200 hover:bg-[#FF6600] hover:text-white active:scale-95"
+            className="rounded-full bg-[#FF6600]/20 border border-[#FF6600]/40 px-3.5 py-1 font-bold text-[#FF6600] transition-all duration-200 hover:bg-[#FF6600] hover:text-white active:scale-95"
           >
             +18 more sectors →
           </a>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          variants={prefersReducedMotion ? undefined : item}
-          className="mt-16"
-        >
-          <motion.div
-            animate={prefersReducedMotion ? undefined : { y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <svg
-              className="mx-auto h-6 w-6 text-text-muted/30"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </motion.div>
         </motion.div>
       </motion.div>
     </section>

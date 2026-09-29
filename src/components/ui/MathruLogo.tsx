@@ -3,7 +3,7 @@
 import React from 'react';
 
 interface MathruLogoProps {
-  variant?: 'full' | 'mark-only' | 'image';
+  variant?: 'full' | 'mark-only';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showTagline?: boolean;
   className?: string;
@@ -12,44 +12,36 @@ interface MathruLogoProps {
 
 const sizeConfig = {
   sm: {
-    markWidth: 32,
-    markHeight: 28,
-    imageHeight: 28,
-    titleSize: 'text-lg',
-    labsSize: 'text-[9px] tracking-[0.28em]',
+    markHeight: 36,
+    titleSize: 'text-xl',
+    labsSize: 'text-[9.5px] tracking-[0.28em]',
     taglineSize: 'text-[7.5px] tracking-[0.2em]',
-    dotSize: 'w-1.5 h-1.5',
     gap: 'gap-2.5',
+    textPaddingBottom: 'pb-0.5',
   },
   md: {
-    markWidth: 44,
-    markHeight: 36,
-    imageHeight: 38,
+    markHeight: 46,
     titleSize: 'text-2xl',
     labsSize: 'text-[11px] tracking-[0.3em]',
     taglineSize: 'text-[8.5px] tracking-[0.22em]',
-    dotSize: 'w-1.5 h-1.5',
     gap: 'gap-3',
+    textPaddingBottom: 'pb-1',
   },
   lg: {
-    markWidth: 58,
-    markHeight: 48,
-    imageHeight: 52,
+    markHeight: 58,
     titleSize: 'text-3xl lg:text-4xl',
     labsSize: 'text-xs tracking-[0.32em]',
     taglineSize: 'text-[10px] tracking-[0.25em]',
-    dotSize: 'w-2 h-2',
     gap: 'gap-4',
+    textPaddingBottom: 'pb-1.5',
   },
   xl: {
-    markWidth: 84,
-    markHeight: 70,
-    imageHeight: 72,
+    markHeight: 76,
     titleSize: 'text-5xl lg:text-6xl',
     labsSize: 'text-sm tracking-[0.35em]',
     taglineSize: 'text-xs tracking-[0.3em]',
-    dotSize: 'w-2.5 h-2.5',
     gap: 'gap-5',
+    textPaddingBottom: 'pb-2',
   },
 };
 
@@ -61,12 +53,10 @@ const sizeConfig = {
  * - Sunset Amber / Orange right wing
  */
 export function MathruLogoMark({
-  width = 44,
-  height = 36,
+  height = 46,
   className = '',
   withGlow = true,
 }: {
-  width?: number;
   height?: number;
   className?: string;
   withGlow?: boolean;
@@ -74,9 +64,9 @@ export function MathruLogoMark({
   return (
     <div
       className={`relative flex items-center justify-center shrink-0 ${className}`}
-      style={{ width, height }}
+      style={{ height, width: height * 1.22 }}
     >
-      {/* Ambient Backlight Glow matching the brand's vibrant spectrum */}
+      {/* Ambient Backlight Glow matching brand palette */}
       {withGlow && (
         <div
           className="absolute inset-0 pointer-events-none -z-10 rounded-full blur-md opacity-85 transition-opacity duration-300 group-hover:opacity-100"
@@ -88,13 +78,12 @@ export function MathruLogoMark({
         />
       )}
 
-      {/* Official 3D Ribbon Lettermark - site identity */}
+      {/* Official 3D Ribbon Lettermark */}
       <img
         src="/brand/site-identity.png"
         alt="Mathru Labs Site Identity"
-        width={width}
-        height={height}
-        className="h-full w-full object-contain drop-shadow-[0_4px_16px_rgba(0,112,243,0.45)] select-none transition-transform duration-300 group-hover:scale-105"
+        style={{ height, width: 'auto' }}
+        className="h-full w-auto object-contain drop-shadow-[0_4px_16px_rgba(0,112,243,0.45)] select-none transition-transform duration-300 group-hover:scale-105"
       />
     </div>
   );
@@ -102,10 +91,10 @@ export function MathruLogoMark({
 
 /**
  * Complete Mathru Labs Official Brand Lockup:
- * - Authentic 3D Sculptural Ribbon "M" site identity mark
+ * - Authentic 3D Ribbon Mark anchored at the bottom baseline
  * - "Mathru" in metallic cyan-sheen bold typography
- * - "LABS" in wide-tracked futuristic uppercase
- * - "AI • SOFTWARE • AUTOMATION" with authentic 3D sphere dots
+ * - "LABS" in wide-tracked uppercase
+ * - "AI | SOFTWARE | AUTOMATION" with clean "|" vertical dividers
  */
 export function MathruLogo({
   variant = 'full',
@@ -119,7 +108,6 @@ export function MathruLogo({
   if (variant === 'mark-only') {
     return (
       <MathruLogoMark
-        width={config.markWidth}
         height={config.markHeight}
         className={className}
         withGlow={animateGlow}
@@ -127,34 +115,20 @@ export function MathruLogo({
     );
   }
 
-  if (variant === 'image') {
-    return (
-      <div className={`inline-flex items-center ${className}`}>
-        <img
-          src="/brand/mathru-logo-full.png"
-          alt="Mathru Labs Logo"
-          style={{ height: config.imageHeight }}
-          className="w-auto object-contain select-none"
-        />
-      </div>
-    );
-  }
-
   return (
-    <div className={`group inline-flex items-center ${config.gap} ${className}`}>
-      {/* 3D Ribbon Lettermark (Site Identity) */}
+    <div className={`group inline-flex items-end ${config.gap} ${className}`}>
+      {/* 3D Ribbon Lettermark (Site Identity) anchored to baseline */}
       <MathruLogoMark
-        width={config.markWidth}
         height={config.markHeight}
         withGlow={true}
       />
 
-      {/* Typography Lockup */}
-      <div className="flex flex-col justify-center leading-none select-none">
+      {/* Typography Lockup aligned to bottom baseline */}
+      <div className={`flex flex-col justify-end leading-none select-none ${config.textPaddingBottom}`}>
         {/* Mathru + LABS Row */}
         <div className="flex items-baseline gap-2">
           <span
-            className={`font-extrabold tracking-tight font-[var(--font-heading)] ${config.titleSize} bg-gradient-to-r from-white via-cyan-100 to-[#38BDF8] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(56,189,248,0.35)]`}
+            className={`font-extrabold tracking-tight font-[var(--font-heading)] ${config.titleSize} bg-gradient-to-b from-white via-[#E0F2FE] to-[#7DD3FC] bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(56,189,248,0.35)]`}
           >
             Mathru
           </span>
@@ -165,19 +139,15 @@ export function MathruLogo({
           </span>
         </div>
 
-        {/* Sub-tagline: AI 🔵 SOFTWARE 🟢 AUTOMATION */}
+        {/* Sub-tagline: AI | SOFTWARE | AUTOMATION */}
         {showTagline && (
           <div
             className={`mt-1.5 flex items-center gap-1.5 font-bold uppercase tracking-wider text-text-muted ${config.taglineSize}`}
           >
             <span className="text-[#38BDF8] transition-colors group-hover:text-white">AI</span>
-            <span
-              className={`inline-block ${config.dotSize} rounded-full bg-gradient-to-tr from-[#0066FF] to-[#38BDF8] shadow-[0_0_6px_rgba(56,189,248,0.9)]`}
-            />
-            <span className="text-white/85 transition-colors group-hover:text-white">SOFTWARE</span>
-            <span
-              className={`inline-block ${config.dotSize} rounded-full bg-gradient-to-tr from-[#00A854] to-[#00D26A] shadow-[0_0_6px_rgba(0,210,106,0.9)]`}
-            />
+            <span className="text-[#0070F3] font-bold mx-0.5 select-none drop-shadow-[0_0_8px_rgba(0,112,243,0.8)]">|</span>
+            <span className="text-white/90 transition-colors group-hover:text-white">SOFTWARE</span>
+            <span className="text-[#00D26A] font-bold mx-0.5 select-none drop-shadow-[0_0_8px_rgba(0,210,106,0.8)]">|</span>
             <span className="text-[#00D26A] transition-colors group-hover:text-white">AUTOMATION</span>
           </div>
         )}

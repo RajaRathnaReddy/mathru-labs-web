@@ -98,6 +98,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${sora.variable} ${inter.variable} ${notoSansTelugu.variable} antialiased`}
     >
       <head>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/brand/site-identity-32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/brand/site-identity-32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/brand/site-identity-192.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
