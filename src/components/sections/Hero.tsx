@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 import { useLanguage } from '@/providers/LanguageProvider';
 import { useDeviceCapability } from '@/hooks/useDeviceCapability';
 import { LivingWorkflowFallback } from '@/components/three/LivingWorkflowFallback';
-import { HeroCommandCockpit } from '@/components/ui/HeroCommandCockpit';
 import { motion } from 'framer-motion';
 import { ArrowDown, MessageCircle, Sparkles, Shield, Zap, Layers } from 'lucide-react';
 
@@ -180,11 +179,6 @@ export function Hero() {
           <span className="flex items-center gap-1.5">
             <Layers className="h-3.5 w-3.5 text-[#FF6B00]" /> Multi-Branch Architecture
           </span>
-        </motion.div>
-
-        {/* 🌟 HERO CENTERPIECE: Live Interactive Neural Cockpit */}
-        <motion.div variants={prefersReducedMotion ? undefined : item}>
-          <HeroCommandCockpit />
         </motion.div>
 
         {/* Quick Industry Pills Bar */}
