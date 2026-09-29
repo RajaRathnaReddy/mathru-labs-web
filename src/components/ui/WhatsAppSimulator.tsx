@@ -56,9 +56,9 @@ export function WhatsAppSimulator({
     }
 
     const nextMsg = messages[currentStep];
-    const isBot = nextMsg.from === 'ai' || nextMsg.from === 'system';
+    const isAgent = nextMsg.from === 'ai' || nextMsg.from === 'system';
 
-    if (isBot) {
+    if (isAgent) {
       setIsTyping(true);
       timerRef.current = setTimeout(() => {
         setIsTyping(false);

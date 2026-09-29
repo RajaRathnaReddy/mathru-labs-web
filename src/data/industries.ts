@@ -335,7 +335,7 @@ export const INDUSTRIES: Industry[] = [
       {
         step: 'Instant Catalog Inquiry',
         sublabel: 'Spec & Price Comparison',
-        description: 'Customer inquires about appliances; bot delivers comparison sheets, specs, and price quotes.',
+        description: 'Customer inquires about appliances; autonomous AI agent delivers comparison sheets, specs, and price quotes.',
       },
       {
         step: '0% EMI Pre-Approval',
