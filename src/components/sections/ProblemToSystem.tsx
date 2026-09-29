@@ -6,7 +6,16 @@ import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SECTION_IDS } from '@/lib/constants';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, ShieldCheck, Database } from 'lucide-react';
+import {
+  Zap,
+  ShieldCheck,
+  Database,
+  MessageSquare,
+  Sparkles,
+  CalendarCheck,
+  Building2,
+  CheckCircle2,
+} from 'lucide-react';
 
 export function ProblemToSystem() {
   const { t } = useLanguage();
@@ -42,7 +51,7 @@ export function ProblemToSystem() {
       icon: Database,
       iconColor: 'text-amber bg-amber/10',
       description:
-        'Not an experiment. Our automation engines already power large-scale community organizations managing 7 Lakh+ active member records and daily automated follow-ups.',
+        'Not a prototype. Our automation engines power multi-branch networks managing 7 Lakh+ active members, daily WhatsApp broadcasts, AI milestone voice greetings, and months of follow-up history.',
     },
   ];
 
@@ -249,6 +258,102 @@ export function ProblemToSystem() {
                 </div>
               );
             })}
+          </div>
+
+          {/* Flagship Production Architecture Spotlight */}
+          <div className="mt-8 overflow-hidden rounded-2xl border border-white/[0.1] bg-gradient-to-br from-[#0B1528] via-[#070D1A] to-ink p-6 sm:p-8 relative">
+            {/* Ambient subtle glow */}
+            <div className="absolute top-0 right-0 -mt-10 -mr-10 h-48 w-48 rounded-full bg-[#0070F3]/10 blur-3xl pointer-events-none" />
+
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/[0.08] relative z-10">
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#00D26A]/15 border border-[#00D26A]/30 px-3 py-0.5 text-[11px] font-bold tracking-wide text-[#00D26A]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00D26A] animate-pulse" />
+                    Live Production Architecture
+                  </span>
+                  <span className="text-xs text-text-muted font-mono">Mega-Scale Proof</span>
+                </div>
+                <h4 className="mt-2 text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  700,000+ Member Multi-Branch Community System
+                </h4>
+                <p className="mt-1 text-xs sm:text-sm text-text-muted max-w-2xl leading-relaxed">
+                  Automating the entire operational pipeline for a multi-branch faith & community network — from high-concurrency daily WhatsApp verses to AI voice-cloned milestone dispatches.
+                </p>
+              </div>
+
+              <div className="flex shrink-0 items-center gap-3 rounded-xl bg-white/[0.04] border border-white/[0.08] px-4 py-3 backdrop-blur-sm">
+                <Building2 className="h-6 w-6 text-[#38BDF8]" />
+                <div className="text-left">
+                  <div className="text-xs font-bold text-white">All Branches Unified</div>
+                  <div className="text-[10px] text-text-muted font-mono">Zero Database Lag</div>
+                </div>
+              </div>
+            </div>
+
+            {/* 4 Pillars of the Live System */}
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 relative z-10">
+              <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-4.5 transition-all duration-200 hover:border-[#38BDF8]/40 hover:bg-[#38BDF8]/5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#38BDF8]/10 text-[#38BDF8] mb-3">
+                  <MessageSquare className="h-4 w-4" />
+                </div>
+                <h5 className="text-xs font-bold text-white mb-1.5">
+                  Automated Daily Verses & Broadcasts
+                </h5>
+                <p className="text-[11px] text-text-muted leading-relaxed">
+                  High-capacity WhatsApp engine automatically dispatches daily morning verses, inspirational reflections, and event notices to massive member lists without manual delays.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-4.5 transition-all duration-200 hover:border-[#FFB020]/40 hover:bg-[#FFB020]/5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#FFB020]/10 text-[#FFB020] mb-3">
+                  <Sparkles className="h-4 w-4" />
+                </div>
+                <h5 className="text-xs font-bold text-white mb-1.5">
+                  AI Avatar & Voice-Cloned Birthday Wishes
+                </h5>
+                <p className="text-[11px] text-text-muted leading-relaxed">
+                  Generative AI pipeline automatically generates personalized video/audio birthday greetings using the leadership’s cloned voice and digital AI avatar, delivered each morning.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-4.5 transition-all duration-200 hover:border-[#00D26A]/40 hover:bg-[#00D26A]/5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#00D26A]/10 text-[#00D26A] mb-3">
+                  <Database className="h-4 w-4" />
+                </div>
+                <h5 className="text-xs font-bold text-white mb-1.5">
+                  7 Lakh+ Multi-Branch Member CRM
+                </h5>
+                <p className="text-[11px] text-text-muted leading-relaxed">
+                  Unified cloud database linking all branch campuses, preserving months of continuous follow-up records, family trees, and pastoral care history with sub-second lookups.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-4.5 transition-all duration-200 hover:border-[#A855F7]/40 hover:bg-[#A855F7]/5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#A855F7]/10 text-[#A855F7] mb-3">
+                  <CalendarCheck className="h-4 w-4" />
+                </div>
+                <h5 className="text-xs font-bold text-white mb-1.5">
+                  Weekly Services & Care Workflow
+                </h5>
+                <p className="text-[11px] text-text-muted leading-relaxed">
+                  Automates Sunday service check-ins, prayer request triage & ticketing, volunteer task dispatch, and multi-branch attendance analytics in real-time.
+                </p>
+              </div>
+            </div>
+
+            {/* Verification Badges */}
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/[0.06] text-[11px] text-text-muted font-mono relative z-10">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#00D26A]" /> 100% Automated Background Queues
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#38BDF8]" /> AI Voice Cloning & Generative Avatars
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#FFB020]" /> Multi-Branch Enterprise Concurrency
+              </span>
+            </div>
           </div>
         </div>
       </div>
