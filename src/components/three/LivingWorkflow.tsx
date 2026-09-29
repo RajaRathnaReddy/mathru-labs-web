@@ -137,16 +137,18 @@ function Nodes({ mouseRef }: { mouseRef: React.RefObject<THREE.Vector2> }) {
   }, []);
 
   // Pre-seed initial matrices immediately on mount so no node ever defaults to (0,0,0)
-  useLayoutEffect(() => {
-    if (!meshRef.current) return;
+  const setMeshRef = useCallback((mesh: THREE.InstancedMesh | null) => {
+    meshRef.current = mesh;
+    if (!mesh) return;
+    const dummyObj = new THREE.Object3D();
     basePositions.forEach((base, i) => {
-      dummy.position.copy(base);
-      dummy.scale.setScalar(0.16);
-      dummy.updateMatrix();
-      meshRef.current!.setMatrixAt(i, dummy.matrix);
+      dummyObj.position.copy(base);
+      dummyObj.scale.setScalar(0.16);
+      dummyObj.updateMatrix();
+      mesh.setMatrixAt(i, dummyObj.matrix);
     });
-    meshRef.current.instanceMatrix.needsUpdate = true;
-  }, [basePositions, dummy]);
+    mesh.instanceMatrix.needsUpdate = true;
+  }, [basePositions]);
 
   useFrame((state) => {
     if (!meshRef.current || !mouseRef.current) return;
@@ -184,7 +186,7 @@ function Nodes({ mouseRef }: { mouseRef: React.RefObject<THREE.Vector2> }) {
 
   return (
     <instancedMesh
-      ref={meshRef}
+      ref={setMeshRef}
       args={[geometry, material, NODE_POSITIONS.length]}
     />
   );
@@ -314,16 +316,18 @@ function DataPulses({ mouseRef }: { mouseRef: React.RefObject<THREE.Vector2> }) 
   }, []);
 
   // Pre-seed initial matrices off-screen with scale 0 so NO pulse can ever appear at (0,0,0)
-  useLayoutEffect(() => {
-    if (!meshRef.current) return;
+  const setMeshRef = useCallback((mesh: THREE.InstancedMesh | null) => {
+    meshRef.current = mesh;
+    if (!mesh) return;
+    const dummyObj = new THREE.Object3D();
+    dummyObj.position.set(0, 0, -9999);
+    dummyObj.scale.set(0, 0, 0);
+    dummyObj.updateMatrix();
     for (let i = 0; i < PULSE_COUNT; i++) {
-      dummy.position.set(0, 0, -1000);
-      dummy.scale.setScalar(0);
-      dummy.updateMatrix();
-      meshRef.current!.setMatrixAt(i, dummy.matrix);
+      mesh.setMatrixAt(i, dummyObj.matrix);
     }
-    meshRef.current.instanceMatrix.needsUpdate = true;
-  }, [dummy]);
+    mesh.instanceMatrix.needsUpdate = true;
+  }, []);
 
   useFrame((state) => {
     if (!meshRef.current || !mouseRef.current) return;
@@ -388,7 +392,7 @@ function DataPulses({ mouseRef }: { mouseRef: React.RefObject<THREE.Vector2> }) 
   });
 
   return (
-    <instancedMesh ref={meshRef} args={[undefined, undefined, PULSE_COUNT]} material={material}>
+    <instancedMesh ref={setMeshRef} args={[undefined, undefined, PULSE_COUNT]} material={material}>
       <planeGeometry args={[1, 1]} />
     </instancedMesh>
   );
@@ -412,16 +416,18 @@ function BackgroundParticles() {
   }, []);
 
   // Pre-seed initial positions so particles never group at (0,0,0)
-  useLayoutEffect(() => {
-    if (!meshRef.current) return;
+  const setMeshRef = useCallback((mesh: THREE.InstancedMesh | null) => {
+    meshRef.current = mesh;
+    if (!mesh) return;
+    const dummyObj = new THREE.Object3D();
     particles.forEach((p, i) => {
-      dummy.position.set(p.x, p.y, p.z);
-      dummy.scale.setScalar(p.size);
-      dummy.updateMatrix();
-      meshRef.current!.setMatrixAt(i, dummy.matrix);
+      dummyObj.position.set(p.x, p.y, p.z);
+      dummyObj.scale.setScalar(p.size);
+      dummyObj.updateMatrix();
+      mesh.setMatrixAt(i, dummyObj.matrix);
     });
-    meshRef.current.instanceMatrix.needsUpdate = true;
-  }, [particles, dummy]);
+    mesh.instanceMatrix.needsUpdate = true;
+  }, [particles]);
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -442,7 +448,7 @@ function BackgroundParticles() {
   });
 
   return (
-    <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+    <instancedMesh ref={setMeshRef} args={[undefined, undefined, count]}>
       <planeGeometry args={[1, 1]} />
       <meshBasicMaterial
         color="#8B93A7"
@@ -458,12 +464,14 @@ function BackgroundParticles() {
 // ── Main Scene ──
 function Scene({ onFrame }: { onFrame?: () => void }) {
   const mouseRef = useMousePosition();
-  const hasTriggeredReady = useRef(false);
+  const frameCount = useRef(0);
 
   useFrame(() => {
-    if (!hasTriggeredReady.current) {
-      hasTriggeredReady.current = true;
-      onFrame?.();
+    if (frameCount.current < 5) {
+      frameCount.current += 1;
+      if (frameCount.current === 5) {
+        onFrame?.();
+      }
     }
   });
 
@@ -481,12 +489,17 @@ function Scene({ onFrame }: { onFrame?: () => void }) {
 export function LivingWorkflow() {
   const [mounted, setMounted] = useState(false);
   const [ready, setReady] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop, { passive: true });
+    return () => window.removeEventListener('resize', checkDesktop);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted || !isDesktop) return null;
 
   return (
     <div

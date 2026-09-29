@@ -157,10 +157,12 @@ export function LivingWorkflowFallback() {
           {pulses.map((pulse, i) => (
             <circle
               key={`pulse-${i}`}
+              cx={pulse.x1}
+              cy={pulse.y1}
               r="3"
               fill="#2DD4BF"
               filter="url(#pulseGlow)"
-              opacity="0.7"
+              opacity="0"
             >
               <animateMotion
                 dur={`${pulse.duration}s`}

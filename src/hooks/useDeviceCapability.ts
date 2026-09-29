@@ -88,8 +88,11 @@ export function useDeviceCapability(): DeviceCapability {
       gpuTier = Math.min(gpuTier, 1);
     }
 
+    // Check screen width — 3D scene is exclusively for desktop wide monitors (>= 1024px)
+    const isDesktopScreen = window.innerWidth >= 1024;
+
     const canHandle3D =
-      !prefersReducedMotion && gpuTier >= 2 && connectionSpeed !== 'slow';
+      !prefersReducedMotion && gpuTier >= 2 && connectionSpeed !== 'slow' && isDesktopScreen;
     const canHandleAnimations = !prefersReducedMotion;
 
     setCapability({
