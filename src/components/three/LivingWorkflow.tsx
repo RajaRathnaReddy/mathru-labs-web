@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useMemo, useCallback, useEffect, useState } from 'react';
+import { useRef, useMemo, useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -135,6 +135,18 @@ function Nodes({ mouseRef }: { mouseRef: React.RefObject<THREE.Vector2> }) {
       blending: THREE.AdditiveBlending,
     });
   }, []);
+
+  // Pre-seed initial matrices immediately on mount so no node ever defaults to (0,0,0)
+  useLayoutEffect(() => {
+    if (!meshRef.current) return;
+    basePositions.forEach((base, i) => {
+      dummy.position.copy(base);
+      dummy.scale.setScalar(0.16);
+      dummy.updateMatrix();
+      meshRef.current!.setMatrixAt(i, dummy.matrix);
+    });
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  }, [basePositions, dummy]);
 
   useFrame((state) => {
     if (!meshRef.current || !mouseRef.current) return;
@@ -301,6 +313,18 @@ function DataPulses({ mouseRef }: { mouseRef: React.RefObject<THREE.Vector2> }) 
     });
   }, []);
 
+  // Pre-seed initial matrices off-screen with scale 0 so NO pulse can ever appear at (0,0,0)
+  useLayoutEffect(() => {
+    if (!meshRef.current) return;
+    for (let i = 0; i < PULSE_COUNT; i++) {
+      dummy.position.set(0, 0, -1000);
+      dummy.scale.setScalar(0);
+      dummy.updateMatrix();
+      meshRef.current!.setMatrixAt(i, dummy.matrix);
+    }
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  }, [dummy]);
+
   useFrame((state) => {
     if (!meshRef.current || !mouseRef.current) return;
     const time = state.clock.elapsedTime;
@@ -310,7 +334,7 @@ function DataPulses({ mouseRef }: { mouseRef: React.RefObject<THREE.Vector2> }) 
 
     pulses.forEach((pulse, i) => {
       if (time < pulse.delay) {
-        dummy.position.set(0, 0, -100);
+        dummy.position.set(0, 0, -1000);
         dummy.scale.setScalar(0);
         dummy.updateMatrix();
         meshRef.current!.setMatrixAt(i, dummy.matrix);
@@ -387,6 +411,18 @@ function BackgroundParticles() {
     }));
   }, []);
 
+  // Pre-seed initial positions so particles never group at (0,0,0)
+  useLayoutEffect(() => {
+    if (!meshRef.current) return;
+    particles.forEach((p, i) => {
+      dummy.position.set(p.x, p.y, p.z);
+      dummy.scale.setScalar(p.size);
+      dummy.updateMatrix();
+      meshRef.current!.setMatrixAt(i, dummy.matrix);
+    });
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  }, [particles, dummy]);
+
   useFrame((state) => {
     if (!meshRef.current) return;
     const time = state.clock.elapsedTime;
@@ -420,8 +456,16 @@ function BackgroundParticles() {
 }
 
 // ── Main Scene ──
-function Scene() {
+function Scene({ onFrame }: { onFrame?: () => void }) {
   const mouseRef = useMousePosition();
+  const hasTriggeredReady = useRef(false);
+
+  useFrame(() => {
+    if (!hasTriggeredReady.current) {
+      hasTriggeredReady.current = true;
+      onFrame?.();
+    }
+  });
 
   return (
     <>
@@ -436,6 +480,7 @@ function Scene() {
 // ── Exported Component ──
 export function LivingWorkflow() {
   const [mounted, setMounted] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -444,7 +489,12 @@ export function LivingWorkflow() {
   if (!mounted) return null;
 
   return (
-    <div className="absolute inset-0 z-0" aria-hidden="true">
+    <div
+      className={`absolute inset-0 z-0 transition-opacity duration-700 ease-out ${
+        ready ? 'opacity-100' : 'opacity-0'
+      }`}
+      aria-hidden="true"
+    >
       <Canvas
         camera={{
           position: [0, 0, 7],
@@ -460,7 +510,7 @@ export function LivingWorkflow() {
         }}
         style={{ background: 'transparent' }}
       >
-        <Scene />
+        <Scene onFrame={() => setReady(true)} />
       </Canvas>
     </div>
   );
