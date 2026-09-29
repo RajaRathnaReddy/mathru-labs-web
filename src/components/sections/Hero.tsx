@@ -75,6 +75,20 @@ export function Hero() {
         }}
       />
 
+      {/* Central Atmospheric Gradient Glow — the warm radiant backdrop behind hero text */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 opacity-30 sm:opacity-25"
+        style={{
+          background: 'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(0,102,255,0.35) 0%, rgba(0,210,255,0.15) 30%, rgba(0,210,106,0.08) 55%, transparent 80%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 opacity-20 sm:opacity-15"
+        style={{
+          background: 'radial-gradient(ellipse 50% 40% at 50% 45%, rgba(255,107,0,0.2) 0%, rgba(255,107,0,0.05) 40%, transparent 70%)',
+        }}
+      />
+
       {/* High-Tech Grid Mesh Floor */}
       <div
         className="pointer-events-none absolute inset-0 -z-20 opacity-20"

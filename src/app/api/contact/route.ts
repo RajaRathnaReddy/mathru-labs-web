@@ -92,20 +92,29 @@ export async function POST(request: NextRequest) {
 
                 <!-- Accent Line -->
                 <tr>
-                  <td style="background-color: #0066FF; height: 3px; line-height: 3px; font-size: 1px;">&nbsp;</td>
+                  <td style="background: linear-gradient(90deg, #0066FF 0%, #00D26A 50%, #FF6B00 100%); height: 3px; line-height: 3px; font-size: 1px;">&nbsp;</td>
                 </tr>
 
                 <!-- Card Body -->
                 <tr>
                   <td style="padding: 40px 40px 36px 40px;">
 
-                    <!-- Title -->
-                    <h1 style="margin: 0 0 6px 0; font-size: 20px; font-weight: 700; color: #18181b; letter-spacing: -0.3px;">
-                      New inquiry from ${name}
-                    </h1>
-                    <p style="margin: 0 0 32px 0; font-size: 14px; color: #71717a; line-height: 1.5;">
-                      ${business} · ${timestamp}
-                    </p>
+                    <!-- Title & Priority Badge -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 24px;">
+                      <tr>
+                        <td>
+                          <h1 style="margin: 0 0 6px 0; font-size: 20px; font-weight: 700; color: #18181b; letter-spacing: -0.3px;">
+                            New inquiry from ${name}
+                          </h1>
+                          <p style="margin: 0; font-size: 14px; color: #71717a; line-height: 1.5;">
+                            ${business} · ${timestamp}
+                          </p>
+                        </td>
+                        <td width="90" align="right" valign="top">
+                          <span style="display: inline-block; padding: 4px 10px; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; font-size: 11px; font-weight: 700; color: #166534; letter-spacing: 0.3px;">NEW LEAD</span>
+                        </td>
+                      </tr>
+                    </table>
 
                     <!-- Client Profile -->
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 28px;">
@@ -138,6 +147,8 @@ export async function POST(request: NextRequest) {
                         <td style="padding: 12px 16px; font-size: 13px; color: #71717a; border-bottom: 1px solid #f4f4f5;">Phone</td>
                         <td style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: #18181b; border-bottom: 1px solid #f4f4f5;">
                           <a href="tel:${cleanPhone}" style="color: #18181b; text-decoration: none;">${phone}</a>
+                          &nbsp;&nbsp;
+                          <a href="https://wa.me/${cleanPhone}" style="color: #0066FF; font-size: 12px; text-decoration: none;">WhatsApp →</a>
                         </td>
                       </tr>
                       <tr>
@@ -145,15 +156,26 @@ export async function POST(request: NextRequest) {
                         <td style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: #18181b; font-family: 'SF Mono', 'Fira Code', monospace; border-bottom: 1px solid #f4f4f5;">${referenceId}</td>
                       </tr>
                       <tr>
-                        <td style="padding: 12px 16px; font-size: 13px; color: #71717a;">Received</td>
-                        <td style="padding: 12px 16px; font-size: 13px; color: #18181b;">${timestamp}</td>
+                        <td style="padding: 12px 16px; font-size: 13px; color: #71717a; border-bottom: 1px solid #f4f4f5;">Received</td>
+                        <td style="padding: 12px 16px; font-size: 13px; color: #18181b; border-bottom: 1px solid #f4f4f5;">${timestamp}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 12px 16px; font-size: 13px; color: #71717a;">Source</td>
+                        <td style="padding: 12px 16px; font-size: 13px; color: #18181b;">mathrulabs.com — Contact Form</td>
                       </tr>
                     </table>
 
                     <!-- Requirements -->
-                    <div style="margin-bottom: 32px;">
-                      <div style="font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px;">Requirements</div>
-                      <div style="background-color: #fafafa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 16px 18px; font-size: 14px; line-height: 1.7; color: #27272a; white-space: pre-wrap;">${message}</div>
+                    <div style="margin-bottom: 28px;">
+                      <div style="font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px;">Client Requirements</div>
+                      <div style="background-color: #fafafa; border: 1px solid #e4e4e7; border-left: 3px solid #0066FF; border-radius: 8px; padding: 16px 18px; font-size: 14px; line-height: 1.7; color: #27272a; white-space: pre-wrap;">${message}</div>
+                    </div>
+
+                    <!-- SLA Reminder -->
+                    <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 14px 16px; margin-bottom: 28px;">
+                      <div style="font-size: 13px; color: #1e40af; line-height: 1.5;">
+                        <strong>Response Protocol:</strong> Contact within 2 hours. Review workflow and offer a 2-week live working pilot demonstration.
+                      </div>
                     </div>
 
                     <!-- Action Buttons -->
@@ -169,6 +191,10 @@ export async function POST(request: NextRequest) {
                              style="display: inline-block; background-color: #ffffff; color: #18181b; font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 8px; text-decoration: none; border: 1px solid #d4d4d8;">
                             Reply via Email
                           </a>` : ''}
+                          <a href="tel:${cleanPhone}"
+                             style="display: inline-block; background-color: #ffffff; color: #18181b; font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 8px; text-decoration: none; border: 1px solid #d4d4d8; margin-left: 8px;">
+                            Call Direct
+                          </a>
                         </td>
                       </tr>
                     </table>
@@ -244,40 +270,57 @@ export async function POST(request: NextRequest) {
 
                 <!-- Accent Line -->
                 <tr>
-                  <td style="background-color: #0066FF; height: 3px; line-height: 3px; font-size: 1px;">&nbsp;</td>
+                  <td style="background: linear-gradient(90deg, #0066FF 0%, #00D26A 50%, #FF6B00 100%); height: 3px; line-height: 3px; font-size: 1px;">&nbsp;</td>
                 </tr>
 
                 <!-- Content -->
                 <tr>
                   <td style="padding: 44px 40px 40px 40px;">
 
+                    <!-- Status Badge -->
+                    <div style="margin-bottom: 20px;">
+                      <span style="display: inline-block; padding: 5px 12px; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; font-size: 11px; font-weight: 700; color: #166534; letter-spacing: 0.3px;">INQUIRY CONFIRMED</span>
+                    </div>
+
                     <!-- Greeting -->
-                    <h1 style="margin: 0 0 24px 0; font-size: 22px; font-weight: 700; color: #18181b; letter-spacing: -0.4px; line-height: 1.3;">
+                    <h1 style="margin: 0 0 20px 0; font-size: 22px; font-weight: 700; color: #18181b; letter-spacing: -0.4px; line-height: 1.3;">
                       Hello ${name},
                     </h1>
 
-                    <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.75; color: #3f3f46;">
-                      Thank you for reaching out to Mathru Labs. We've received your inquiry about <strong style="color: #18181b;">${business}</strong> and a dedicated engineer has been assigned to review your requirements.
+                    <p style="margin: 0 0 14px 0; font-size: 15px; line-height: 1.75; color: #3f3f46;">
+                      Thank you for reaching out to <strong style="color: #18181b;">Mathru Labs</strong>. We've received your inquiry about <strong style="color: #18181b;">${business}</strong> and a dedicated solution architect has been assigned to review your requirements.
                     </p>
 
-                    <p style="margin: 0 0 32px 0; font-size: 15px; line-height: 1.75; color: #52525b;">
-                      Every system we build is purpose-engineered around your workflow — designed to eliminate bottlenecks, reduce operating hours, and scale operations without expanding headcount.
+                    <p style="margin: 0 0 28px 0; font-size: 15px; line-height: 1.75; color: #52525b;">
+                      We build custom AI tools, enterprise CRMs, workflow automation systems, and full-stack software — purpose-engineered around your specific business operations to eliminate bottlenecks, reduce operating hours, and scale without expanding headcount.
                     </p>
 
                     <!-- Divider -->
-                    <div style="height: 1px; background-color: #e4e4e7; margin-bottom: 32px;"></div>
+                    <div style="height: 1px; background-color: #e4e4e7; margin-bottom: 28px;"></div>
 
                     <!-- Inquiry Summary -->
-                    <div style="margin-bottom: 32px;">
-                      <div style="font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px;">Your Inquiry Summary</div>
+                    <div style="margin-bottom: 28px;">
+                      <div style="font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px;">Your Inquiry Details</div>
                       <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: 1px solid #e4e4e7; border-radius: 8px; overflow: hidden;">
                         <tr>
-                          <td style="padding: 12px 16px; font-size: 13px; color: #71717a; border-bottom: 1px solid #f4f4f5; width: 120px;">Reference</td>
+                          <td style="padding: 12px 16px; font-size: 13px; color: #71717a; border-bottom: 1px solid #f4f4f5; width: 130px;">Reference ID</td>
                           <td style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: #18181b; font-family: 'SF Mono', 'Fira Code', monospace; border-bottom: 1px solid #f4f4f5;">${referenceId}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 12px 16px; font-size: 13px; color: #71717a; border-bottom: 1px solid #f4f4f5;">Name</td>
+                          <td style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: #18181b; border-bottom: 1px solid #f4f4f5;">${name}</td>
                         </tr>
                         <tr>
                           <td style="padding: 12px 16px; font-size: 13px; color: #71717a; border-bottom: 1px solid #f4f4f5;">Industry</td>
                           <td style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: #18181b; border-bottom: 1px solid #f4f4f5;">${business}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 12px 16px; font-size: 13px; color: #71717a; border-bottom: 1px solid #f4f4f5;">Phone</td>
+                          <td style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: #18181b; border-bottom: 1px solid #f4f4f5;">${phone}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding: 12px 16px; font-size: 13px; color: #71717a; border-bottom: 1px solid #f4f4f5;">Submitted On</td>
+                          <td style="padding: 12px 16px; font-size: 13px; color: #18181b; border-bottom: 1px solid #f4f4f5;">${timestamp}</td>
                         </tr>
                         <tr>
                           <td style="padding: 12px 16px; font-size: 13px; color: #71717a; vertical-align: top;">Requirements</td>
@@ -287,18 +330,18 @@ export async function POST(request: NextRequest) {
                     </div>
 
                     <!-- What Happens Next -->
-                    <div style="margin-bottom: 36px;">
+                    <div style="margin-bottom: 32px;">
                       <div style="font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 18px;">What Happens Next</div>
 
                       <!-- Step 1 -->
                       <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 18px;">
                         <tr>
                           <td width="32" valign="top">
-                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #f4f4f5; border: 1px solid #d4d4d8; color: #52525b; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px;">1</div>
+                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px;">1</div>
                           </td>
                           <td style="padding-left: 12px;">
-                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Workflow Analysis</div>
-                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">We study your operations to identify where custom software and AI can have the highest impact.</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Workflow & Bottleneck Analysis</div>
+                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">Our engineering team studies your current operations to identify where custom software, AI agents, and automation can have the highest ROI impact.</div>
                           </td>
                         </tr>
                       </table>
@@ -307,11 +350,11 @@ export async function POST(request: NextRequest) {
                       <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 18px;">
                         <tr>
                           <td width="32" valign="top">
-                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #f4f4f5; border: 1px solid #d4d4d8; color: #52525b; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px;">2</div>
+                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px;">2</div>
                           </td>
                           <td style="padding-left: 12px;">
-                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Architecture & Pilot Plan</div>
-                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">We prepare a solution blueprint with a 2-week working pilot timeline and clear ROI projection.</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Custom Architecture & Pilot Plan</div>
+                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">We prepare a tailored solution blueprint with a <strong style="color: #18181b;">2-week live working pilot</strong> timeline, tech stack recommendation, and clear ROI projection for your business.</div>
                           </td>
                         </tr>
                       </table>
@@ -320,33 +363,47 @@ export async function POST(request: NextRequest) {
                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                           <td width="32" valign="top">
-                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #f4f4f5; border: 1px solid #d4d4d8; color: #52525b; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px;">3</div>
+                            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #fff7ed; border: 1px solid #fed7aa; color: #c2410c; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px;">3</div>
                           </td>
                           <td style="padding-left: 12px;">
-                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Personal Consultation</div>
-                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">A solution architect will reach out within 24 hours to walk you through the proposal and demo.</div>
+                            <div style="font-size: 14px; font-weight: 600; color: #18181b; margin-bottom: 3px;">Direct Consultation & Live Demo</div>
+                            <div style="font-size: 13px; line-height: 1.6; color: #71717a;">A dedicated solution architect will reach out to you within <strong style="color: #18181b;">24 business hours</strong> via WhatsApp or phone to walk you through the proposal and demonstrate our approach.</div>
                           </td>
                         </tr>
                       </table>
                     </div>
 
                     <!-- CTA -->
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 36px;">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 32px;">
                       <tr>
                         <td align="center">
-                          <p style="margin: 0 0 14px 0; font-size: 14px; color: #52525b; text-align: center;">
-                            Need to discuss something urgently?
-                          </p>
-                          <a href="https://wa.me/${WHATSAPP_PHONE}?text=Hello%20Mathru%20Labs!%20I%20just%20submitted%20an%20inquiry%20(Ref:%20${referenceId})%20for%20${encodeURIComponent(business)}%20and%20would%20like%20to%20connect."
-                             style="display: inline-block; background-color: #18181b; color: #ffffff; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none;">
-                            Chat with us on WhatsApp
-                          </a>
+                          <div style="background-color: #fafafa; border: 1px solid #e4e4e7; border-radius: 10px; padding: 22px 24px; text-align: center;">
+                            <div style="font-size: 15px; font-weight: 700; color: #18181b; margin-bottom: 6px;">
+                              Need immediate assistance?
+                            </div>
+                            <div style="font-size: 13px; color: #71717a; margin-bottom: 16px; line-height: 1.5;">
+                              Connect directly with our founding engineer on WhatsApp for a zero-wait response.
+                            </div>
+                            <a href="https://wa.me/${WHATSAPP_PHONE}?text=Hello%20Mathru%20Labs!%20I%20just%20submitted%20an%20inquiry%20(Ref:%20${referenceId})%20for%20${encodeURIComponent(business)}%20and%20would%20like%20to%20connect."
+                               style="display: inline-block; background-color: #18181b; color: #ffffff; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none;">
+                              Chat with us on WhatsApp
+                            </a>
+                          </div>
                         </td>
                       </tr>
                     </table>
 
+                    <!-- Trust Signals -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 32px;">
+                      <tr>
+                        <td align="center" style="font-size: 12px; color: #71717a; padding: 4px 0;">100% Data Confidentiality</td>
+                        <td align="center" style="font-size: 12px; color: #71717a; padding: 4px 0;">Zero Third-Party Sharing</td>
+                        <td align="center" style="font-size: 12px; color: #71717a; padding: 4px 0;">On-Prem / Private Cloud</td>
+                      </tr>
+                    </table>
+
                     <!-- Divider -->
-                    <div style="height: 1px; background-color: #e4e4e7; margin-bottom: 32px;"></div>
+                    <div style="height: 1px; background-color: #e4e4e7; margin-bottom: 28px;"></div>
 
                     <!-- Founder Sign-off -->
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -401,7 +458,7 @@ export async function POST(request: NextRequest) {
           replyTo: `Mathru Labs <${SMTP_USER}>`,
           subject: clientSubject,
           html: clientHtml,
-          text: `Hello ${name},\n\nThank you for reaching out to Mathru Labs regarding ${business}. We have received your inquiry [Ref: ${referenceId}] and our engineering team will get in touch with you within 24 hours.\n\nSummary:\n- Reference Code: ${referenceId}\n- Business / Industry: ${business}\n- Contact Phone: ${phone}\n- Your Request: ${message}\n\nNeed immediate assistance? Message us on WhatsApp: +91 97045 06779\n\nWarm regards,\n${FOUNDER_NAME}\n${FOUNDER_TITLE}, Mathru Labs\nhttps://mathrulabs.com`,
+          text: `Hello ${name},\n\nThank you for reaching out to Mathru Labs regarding ${business}. We have received your inquiry [Ref: ${referenceId}] and our engineering team will get in touch with you within 24 hours.\n\nInquiry Details:\n- Reference Code: ${referenceId}\n- Name: ${name}\n- Business / Industry: ${business}\n- Contact Phone: ${phone}\n- Submitted On: ${timestamp}\n- Your Request: ${message}\n\nWhat Happens Next:\n1. Workflow & Bottleneck Analysis — We study your operations\n2. Custom Architecture & Pilot Plan — 2-week live working pilot\n3. Direct Consultation & Live Demo — Within 24 business hours\n\nNeed immediate assistance? Message us on WhatsApp: +91 97045 06779\n\nWarm regards,\n${FOUNDER_NAME}\n${FOUNDER_TITLE}, Mathru Labs\nhttps://mathrulabs.com · hello@mathrulabs.com · +91 97045 06779`,
         });
         clientEmailSent = true;
         console.log(`[Contact API] Confirmation email delivered to client: ${clientEmail}`);
