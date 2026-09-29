@@ -175,7 +175,7 @@ export function Hero() {
             <Shield className="h-3.5 w-3.5 text-[#00D26A]" /> 100% Data Sovereignty (On-Prem / Private Cloud)
           </span>
           <span className="flex items-center gap-1.5">
-            <Zap className="h-3.5 w-3.5 text-[#38BDF8]" /> 48-Hour Pilot Deployment
+            <Zap className="h-3.5 w-3.5 text-[#38BDF8]" /> 2-Week Pilot Deployment
           </span>
           <span className="flex items-center gap-1.5">
             <Layers className="h-3.5 w-3.5 text-[#FF6B00]" /> Multi-Branch Architecture

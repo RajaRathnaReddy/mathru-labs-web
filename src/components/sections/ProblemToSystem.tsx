@@ -11,11 +11,26 @@ export function ProblemToSystem() {
   const { t } = useLanguage();
   const [activeView, setActiveView] = useState<'both' | 'chaos' | 'system'>('both');
 
-  // Comparison metrics for impact
-  const metrics = [
-    { label: 'Customer Response Time', before: '3–6 hours', after: '< 15 seconds' },
-    { label: 'Operational & Order Errors', before: '12–18% manual leaks', after: '0% (Rules & AI validated)' },
-    { label: 'Lead & Client Follow-ups', before: '35% dropped', after: '100% automated on time' },
+  // Target architectural outcomes (engineering benchmarks we design systems to hit, not fake retrospective client results)
+  const targetOutcomes = [
+    {
+      category: 'Customer Response SLA',
+      target: '< 30 Seconds',
+      description: 'Immediate 24/7 automated acknowledgment, triage & FAQ handling on WhatsApp & Web.',
+      status: 'Target SLA',
+    },
+    {
+      category: 'Data Integrity & Accuracy',
+      target: 'Zero Manual Re-Entry',
+      description: 'Strict schema validation rules and direct system sync eliminate copy-paste human error.',
+      status: 'Design Standard',
+    },
+    {
+      category: 'Operational Follow-ups',
+      target: '100% Scheduled Delivery',
+      description: 'Automated background queues handle client reminders, report alerts & billing dispatches on time.',
+      status: 'System Target',
+    },
   ];
 
   return (
@@ -174,22 +189,36 @@ export function ProblemToSystem() {
           </AnimatePresence>
         </div>
 
-        {/* Business Impact Metrics */}
+        {/* Target Outcomes / What We Engineer For */}
         <div className="mt-12 rounded-2xl border border-border-subtle bg-indigo/30 p-6 sm:p-8 backdrop-blur-sm">
-          <div className="mb-4 text-center">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber">
-              Measurable Transformation
+          <div className="mb-6 text-center">
+            <span className="inline-block rounded-full bg-teal/10 border border-teal/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-teal">
+              Target Outcomes · What We Aim For
             </span>
+            <p className="mt-2 text-xs text-text-muted max-w-xl mx-auto">
+              Measurable architectural benchmarks we design every custom system to achieve — clear engineering targets, not retrospective marketing claims.
+            </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-3">
-            {metrics.map((m, idx) => (
-              <div key={idx} className="rounded-xl border border-border-subtle/60 bg-ink-light/50 p-4 text-center">
-                <p className="text-xs font-medium text-text-muted">{m.label}</p>
-                <div className="mt-2 flex items-center justify-center gap-2">
-                  <span className="text-xs text-red-400 line-through">{m.before}</span>
-                  <span className="text-text-muted">→</span>
-                  <span className="text-sm font-bold text-teal">{m.after}</span>
+            {targetOutcomes.map((item, idx) => (
+              <div
+                key={idx}
+                className="group relative rounded-xl border border-border-subtle/60 bg-ink-light/50 p-5 text-left transition-all duration-200 hover:border-teal/30 hover:bg-ink-light/70"
+              >
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="text-[11px] font-mono font-medium text-text-muted">
+                    {item.category}
+                  </span>
+                  <span className="rounded-full bg-teal/10 px-2 py-0.5 text-[10px] font-semibold text-teal">
+                    {item.status}
+                  </span>
                 </div>
+                <div className="text-lg font-bold tracking-tight text-white mb-1.5">
+                  {item.target}
+                </div>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
