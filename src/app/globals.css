@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+/* ── Brand Design Tokens (Mathru Labs Corporate Identity) ── */
+@theme inline {
+  /* Slate & Obsidian Architectural Canvas */
+  --color-ink: #080C14;
+  --color-ink-light: #0E1422;
+  --color-indigo: #12192B;
+  --color-indigo-light: #19233C;
+
+  /* Official Brand Trifecta (Blue, Emerald, Orange) */
+  /* 1. Electric Azure / Sapphire Blue (Software & AI) */
+  --color-azure: #0066FF;
+  --color-azure-light: #38BDF8;
+  --color-cyan-glow: #00E5FF;
+
+  /* 2. Neon Emerald / Vivid Mint Green (Automation & Vitality) */
+  --color-teal: #00D26A;
+  --color-teal-dim: #059669;
+  --color-emerald: #00D26A;
+  --color-emerald-light: #34D399;
+
+  /* 3. Sunset Radiant Orange / Amber (Speed, Action & Energy) */
+  --color-amber: #FF6600;
+  --color-amber-dim: #E65100;
+  --color-orange: #FF6600;
+  --color-orange-light: #FB923C;
+
+  /* Typography Colors */
+  --color-text-soft: #EAEFF9;
+  --color-text-muted: #8E99B2;
+  --color-text-heading: #FFFFFF;
+
+  /* Borders & Dividers */
+  --color-border-subtle: #1B253D;
+  --color-border-glow: rgba(0, 112, 243, 0.35);
+
+  --font-heading: var(--font-sora);
+  --font-body: var(--font-inter);
+  --font-telugu: var(--font-noto-sans-telugu);
+}
+
+/* ── Base Styles ── */
+:root {
+  --background: #080C14;
+  --foreground: #EAEFF9;
+  --brand-blue: #0066FF;
+  --brand-emerald: #00D26A;
+  --brand-orange: #FF6600;
+  color-scheme: dark;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1E2538 transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling {
+  overflow: auto;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  color: var(--color-text-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Telugu text class */
+.text-telugu {
+  font-family: var(--font-telugu), system-ui, sans-serif;
+}
+
+/* ── Custom Utilities ── */
+
+/* Signature Brand Tri-Color Gradient Text (Blue -> Emerald -> Sunset Orange) */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #0070F3 0%, #00D26A 50%, #FF6600 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-azure {
+  background: linear-gradient(135deg, #0066FF 0%, #38BDF8 60%, #BAE6FD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient text */
+.text-gradient-amber,
+.text-gradient-orange {
+  background: linear-gradient(135deg, #FF7A00 0%, #FF5500 50%, #FFA800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-teal,
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #00D26A 0%, #34D399 50%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow card border with Tri-Color rotation */
+.glow-border {
+  position: relative;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    transparent 20%,
+    #0066FF 40%,
+    #00D26A 60%,
+    #FF6600 80%,
+    transparent 95%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+  animation: glow-rotate 3.5s linear infinite;
+}
+
+@keyframes glow-rotate {
+  0% {
+    background: linear-gradient(0deg, transparent 20%, #0066FF 40%, #00D26A 60%, #FF6600 80%, transparent 95%);
+  }
+  25% {
+    background: linear-gradient(90deg, transparent 20%, #0066FF 40%, #00D26A 60%, #FF6600 80%, transparent 95%);
+  }
+  50% {
+    background: linear-gradient(180deg, transparent 20%, #0066FF 40%, #00D26A 60%, #FF6600 80%, transparent 95%);
+  }
+  75% {
+    background: linear-gradient(270deg, transparent 20%, #0066FF 40%, #00D26A 60%, #FF6600 80%, transparent 95%);
+  }
+  100% {
+    background: linear-gradient(360deg, transparent 20%, #0066FF 40%, #00D26A 60%, #FF6600 80%, transparent 95%);
+  }
+}
+
+/* Cursor glow effect (desktop only) */
+.cursor-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.cursor-glow::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-amber) 0%, transparent 70%);
+  opacity: 0.04;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  left: var(--mouse-x, -9999px);
+  top: var(--mouse-y, -9999px);
+}
+
+/* Section divider with Tri-Color Spectrum */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-border-subtle) 15%,
+    #0066FF 35%,
+    #00D26A 50%,
+    #FF6600 65%,
+    var(--color-border-subtle) 85%,
+    transparent 100%
+  );
+  opacity: 0.6;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+/* Noise overlay texture */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cursor-glow::after {
+    display: none;
+  }
+}

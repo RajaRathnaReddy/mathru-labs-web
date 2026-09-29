@@ -1,0 +1,4 @@
+# Sitemap: https://mathrulabs.com/sitemap.xml
+
+User-agent: *
+Allow: /

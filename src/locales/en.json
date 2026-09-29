@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "title": "Mathru Labs — AI Tools, Custom Software & CRMs for Every Industry",
+    "description": "We engineer custom software, AI tools, CRMs, and autonomous workflows for every industry. Turn manual business operations into intelligent, scalable systems."
+  },
+  "nav": {
+    "whatWeBuild": "What We Build",
+    "industries": "Industries",
+    "howWeWork": "How We Work",
+    "pilot": "Pilot Program",
+    "contact": "Contact",
+    "chatWhatsApp": "Chat on WhatsApp"
+  },
+  "hero": {
+    "headline": "We turn manual business work into intelligent systems.",
+    "subline": "Custom AI tools, enterprise CRMs, and intelligent software purpose-built for every industry.",
+    "cta1": "See how it works",
+    "cta2": "Talk on WhatsApp"
+  },
+  "problem": {
+    "badge": "The Problem",
+    "title": "From chaos to clarity",
+    "description": "Whether you run healthcare, retail, manufacturing, real estate, education, or finance, manual work drains time and leaks revenue. We connect your scattered tools into one intelligent system.",
+    "chaos": {
+      "title": "Today",
+      "items": [
+        "Disconnected spreadsheets, registers, and paper notebooks",
+        "Missed customer calls, slow responses, and forgotten follow-ups",
+        "Scattered data across email, WhatsApp, and siloed software",
+        "Manual reminders, duplicate data entry, and delayed execution",
+        "No real-time visibility into overall business operations"
+      ]
+    },
+    "system": {
+      "title": "With Mathru Labs",
+      "items": [
+        "Every record digitized, centralized, and instantly searchable",
+        "Autonomous AI agents answering customer inquiries in seconds",
+        "Custom CRM and operational software tailored to your workflows",
+        "Automated document delivery, reminders, and payment tracking",
+        "Unified executive command center for data-backed decisions"
+      ]
+    }
+  },
+  "whatWeBuild": {
+    "badge": "What We Build",
+    "title": "Four pillars of your intelligent business system",
+    "cards": [
+      {
+        "title": "Workflow Automation & Tools",
+        "description": "We connect your existing tools, ERPs, and spreadsheets into fast, automatic workflows. What took hours of manual work now happens in seconds.",
+        "icon": "workflow"
+      },
+      {
+        "title": "Autonomous AI Agents",
+        "description": "Intelligent conversational agents on WhatsApp, web chat, and voice that handle customer inquiries, bookings, and 24/7 client triage.",
+        "icon": "ai"
+      },
+      {
+        "title": "Custom CRMs & Business Apps",
+        "description": "Bespoke web applications and CRMs engineered for your exact business model — tracking clients, orders, patient visits, jobs, or inventory.",
+        "icon": "crm"
+      },
+      {
+        "title": "Integrations & Live Dashboards",
+        "description": "Connect WhatsApp, your billing software, Tally/Zoho, payment gateways, and databases into one real-time operational command center.",
+        "icon": "dashboard"
+      }
+    ]
+  },
+  "miniDemo": {
+    "badge": "See It In Action",
+    "title": "A patient journey, automated",
+    "description": "Watch how a simple WhatsApp message triggers an entire workflow — from booking to automated report delivery.",
+    "play": "Play Demo",
+    "replay": "Replay",
+    "messages": [
+      {
+        "from": "patient",
+        "text": "Hi, I'd like to book a blood test for tomorrow morning.",
+        "time": "9:02 AM"
+      },
+      {
+        "from": "ai",
+        "text": "Good morning! I've booked your CBC test for tomorrow at 8:30 AM at Sunrise Diagnostics. Please fast for 8 hours before the test. Reply OK to confirm.",
+        "time": "9:02 AM"
+      },
+      {
+        "from": "patient",
+        "text": "OK",
+        "time": "9:03 AM"
+      },
+      {
+        "from": "ai",
+        "text": "Confirmed! You'll receive a reminder tonight at 9 PM. Your report will be sent here within 4 hours of collection.",
+        "time": "9:03 AM"
+      },
+      {
+        "from": "system",
+        "text": "⏰ Reminder: Your blood test is tomorrow at 8:30 AM. Remember to fast from midnight. — Sunrise Diagnostics",
+        "time": "9:00 PM"
+      },
+      {
+        "from": "system",
+        "text": "Your CBC report is ready! All values are within normal range. Full report attached below. — Sunrise Diagnostics",
+        "time": "12:15 PM"
+      }
+    ]
+  },
+  "industries": {
+    "badge": "Every Industry Supported",
+    "title": "Purpose-built solutions for 25+ business sectors",
+    "sectors": [
+      {
+        "name": "Healthcare & Wellness",
+        "subtitle": "Hospitals, diagnostic labs, pharmacies, gyms & spas",
+        "examples": [
+          "Patient 360 CRM and OPD token queue management",
+          "Automated LIS lab report delivery via WhatsApp",
+          "Chronic prescription refills and membership renewals"
+        ]
+      },
+      {
+        "name": "Retail & Commerce",
+        "subtitle": "Malls, supermarkets, electronics, jewellery, auto dealerships",
+        "examples": [
+          "WhatsApp catalog ordering and real-time inventory sync",
+          "Service booking, digital job cards, and gatepass delivery",
+          "Automated quotation PDFs and warranty renewal alerts"
+        ]
+      },
+      {
+        "name": "Finance & Professional",
+        "subtitle": "Banks, NBFCs, CA firms, law offices, insurance agencies",
+        "examples": [
+          "Conversational loan eligibility and document AI intake",
+          "GST filing document collection and compliance countdown",
+          "Policy renewal reminders and instant digital claim desk"
+        ]
+      },
+      {
+        "name": "Real Estate & Construction",
+        "subtitle": "Agencies, builders, civil contractors, interior designers",
+        "examples": [
+          "15-second ad lead qualification and site visit scheduling",
+          "Interactive 3D brochure and floor plan distribution",
+          "Construction milestone demand notes and key handover audits"
+        ]
+      },
+      {
+        "name": "Education & Community",
+        "subtitle": "Schools, coaching institutes, NGOs and charitable trusts",
+        "examples": [
+          "Admission pipeline CRM and automated fee reminder notices",
+          "Student test scorecards and bus GPS tracking alerts",
+          "Instant 80G tax exemption certificates and donor reports"
+        ]
+      },
+      {
+        "name": "Hospitality & Food",
+        "subtitle": "Hotels, resorts, restaurants, cafes, event planners",
+        "examples": [
+          "Mobile pre-arrival guest check-in and digital room concierge",
+          "Zero-commission WhatsApp takeout ordering and table booking",
+          "Automated multi-vendor RFPs and interactive guest RSVPs"
+        ]
+      },
+      {
+        "name": "Logistics & Manufacturing",
+        "subtitle": "Fleet operators, transport hubs, factories, MSME units",
+        "examples": [
+          "Freight booking, E-Way bill checks, and live telematics links",
+          "Signed digital Proof of Delivery (POD) and instant billing",
+          "B2B purchase order parsing and raw material stock alerts"
+        ]
+      }
+    ]
+  },
+  "howWeWork": {
+    "badge": "How We Work",
+    "title": "From understanding your workflows to live deployment in weeks",
+    "steps": [
+      {
+        "title": "Understand",
+        "description": "We analyze your day-to-day operations, review your team's routine tasks, and map every bottleneck, spreadsheet, and manual handoff."
+      },
+      {
+        "title": "Design",
+        "description": "We architect the software, database schema, CRM modules, and AI workflows before writing code so you review the blueprint."
+      },
+      {
+        "title": "Build",
+        "description": "We engineer your custom tools in agile sprints, delivering working software, interactive prototypes, and automations every week."
+      },
+      {
+        "title": "Connect",
+        "description": "We integrate the system into your existing stack — WhatsApp, ERPs, accounting, payment gateways, and databases."
+      },
+      {
+        "title": "Improve",
+        "description": "We provide 24/7 monitoring, security updates, and continuous optimization as your business scales."
+      }
+    ]
+  },
+  "pilot": {
+    "badge": "Pilot Program",
+    "title": "Start with a pilot. Prove the ROI. Scale with confidence.",
+    "description": "We work with businesses across every industry. Start with a focused pilot to automate a single high-impact bottleneck before scaling to a complete operating system.",
+    "tiers": [
+      {
+        "name": "Starter Tool",
+        "description": "One core workflow or tool automated",
+        "features": [
+          "Single custom workflow automation",
+          "WhatsApp bot integration",
+          "Operational dashboard",
+          "2 weeks deployment",
+          "30 days dedicated support"
+        ]
+      },
+      {
+        "name": "Growth System",
+        "description": "Custom CRM + Multi-department automations",
+        "features": [
+          "Up to 3 interconnected workflows",
+          "Autonomous AI agent for routine tasks",
+          "Bespoke industry CRM or portal",
+          "Accounting / ERP integration",
+          "4 weeks deployment",
+          "60 days dedicated support"
+        ],
+        "highlighted": true
+      },
+      {
+        "name": "Enterprise OS",
+        "description": "Full intelligent operating system",
+        "features": [
+          "Complete custom software platform",
+          "Multiple specialized AI agents",
+          "Multi-branch & multi-department sync",
+          "Advanced analytics command center",
+          "Third-party ERP & API integrations",
+          "Continuous optimization & SLA"
+        ]
+      }
+    ]
+  },
+  "whyMathru": {
+    "badge": "Why \"Mathru\"",
+    "title": "Mathru means mother. Mathru means origin.",
+    "story": "We named ourselves Mathru because we believe technology should care for a business the way a mother cares for her family — quietly, reliably, always there. We don't build flashy tools that impress for a day. We build systems that run behind the scenes, day after day, making sure nothing falls through the cracks. Your customers get instant replies. Your operational pipeline runs without errors. Your leads get followed up on time. Your team gets their hours back. That's the Mathru way."
+  },
+  "trust": {
+    "badge": "Trust & Security",
+    "title": "Your data is yours. Always.",
+    "promises": [
+      "We collect only the operational data needed to power your custom system.",
+      "Customer, financial, and business data is strictly isolated and never shared outside your organization.",
+      "All systems are fortified with end-to-end encryption at rest and in transit.",
+      "You retain 100% data ownership and can export or delete records at any time.",
+      "Compliant with Indian Digital Personal Data Protection (DPDP) standards."
+    ],
+    "privacyLink": "Read our full Privacy Policy",
+    "termsLink": "Terms of Service"
+  },
+  "contact": {
+    "badge": "Get In Touch",
+    "title": "Let's talk about what custom software or automation you need",
+    "description": "Tell us about your business, the manual tasks slowing your team down, or the custom software/CRM you want to build. We'll get back to you within 24 hours.",
+    "form": {
+      "name": "Your name",
+      "business": "Business industry / type",
+      "phone": "Phone number",
+      "message": "What tool, CRM, or software do you want to build?",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent! Our engineering team will be in touch within 24 hours.",
+      "error": "Something went wrong. Please try WhatsApp instead."
+    },
+    "whatsapp": "Chat on WhatsApp",
+    "whatsappHint": "Prefer a direct conversation? Message our team directly."
+  },
+  "footer": {
+    "location": "India",
+    "copyright": "Mathru Labs",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}
