@@ -53,36 +53,25 @@ export function Hero() {
       {/* 1. Deep Multi-Layered Atmospheric Lighting Aurora (Mathru Brand Palette) */}
       <div className="absolute inset-0 -z-30 bg-[#070B14]" />
       
-      {/* Primary Signature Aurora Wash — Full-coverage percentage-based brand gradients */}
+      {/* Radiant Top Glow Spotlight (Electric Blue & Cyan) */}
       <div
-        className="pointer-events-none absolute inset-0 -z-20"
+        className="pointer-events-none absolute -top-40 left-1/2 -z-20 h-[500px] w-[800px] -translate-x-1/2 rounded-full opacity-40 blur-[130px]"
         style={{
-          background: [
-            'radial-gradient(ellipse 85% 55% at 50% -5%, rgba(0, 102, 255, 0.5) 0%, rgba(0, 210, 255, 0.3) 35%, transparent 70%)',
-            'radial-gradient(ellipse 65% 70% at 15% 35%, rgba(0, 210, 106, 0.4) 0%, rgba(0, 210, 255, 0.18) 45%, transparent 75%)',
-            'radial-gradient(ellipse 65% 70% at 85% 38%, rgba(255, 107, 0, 0.4) 0%, rgba(255, 160, 64, 0.18) 45%, transparent 75%)',
-            'radial-gradient(ellipse 75% 55% at 50% 45%, rgba(0, 112, 243, 0.22) 0%, rgba(0, 210, 106, 0.08) 40%, rgba(255, 107, 0, 0.08) 65%, transparent 80%)',
-          ].join(', '),
+          background: 'radial-gradient(circle, #0066FF 0%, #00D2FF 40%, transparent 70%)',
         }}
       />
 
-      {/* Atmospheric Mid-Field Glow Spots for Volumetric Depth */}
+      {/* Emerald & Sunset Orange Side Flares */}
       <div
-        className="pointer-events-none absolute -top-24 left-1/2 -z-20 h-[500px] w-[850px] -translate-x-1/2 rounded-full opacity-60 blur-[90px]"
+        className="pointer-events-none absolute top-1/4 -left-40 -z-20 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]"
         style={{
-          background: 'radial-gradient(ellipse at 50% 25%, #0066FF 0%, #00D2FF 50%, transparent 80%)',
+          background: 'radial-gradient(circle, #00D26A 0%, transparent 70%)',
         }}
       />
       <div
-        className="pointer-events-none absolute top-16 -left-20 -z-20 h-[650px] w-[650px] rounded-full opacity-50 blur-[85px]"
+        className="pointer-events-none absolute top-1/3 -right-40 -z-20 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]"
         style={{
-          background: 'radial-gradient(circle, #00D26A 0%, rgba(0,210,255,0.4) 40%, transparent 75%)',
-        }}
-      />
-      <div
-        className="pointer-events-none absolute top-16 -right-20 -z-20 h-[650px] w-[650px] rounded-full opacity-50 blur-[85px]"
-        style={{
-          background: 'radial-gradient(circle, #FF6B00 0%, rgba(255,160,64,0.4) 40%, transparent 75%)',
+          background: 'radial-gradient(circle, #FF6B00 0%, transparent 70%)',
         }}
       />
 
@@ -135,11 +124,8 @@ export function Hero() {
           className="text-4xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[76px] leading-[1.08] max-w-5xl mx-auto drop-shadow-md font-[var(--font-heading)]"
         >
           {t.hero.headlineMain}{' '}
-          <span className="inline-block bg-gradient-to-r from-[#00D2FF] to-[#00D26A] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,210,255,0.45)]">
-            {(t.hero as any).headlineGradientAi || 'intelligent'}
-          </span>{' '}
-          <span className="inline-block bg-gradient-to-r from-[#FF6B00] via-[#FF8800] to-[#FFA034] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(255,107,0,0.45)]">
-            {(t.hero as any).headlineGradientSystems || 'systems.'}
+          <span className="bg-gradient-to-r from-[#00D2FF] via-[#00D26A] to-[#FF6B00] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,210,255,0.35)]">
+            {t.hero.headlineGradient}
           </span>
         </motion.h1>
 

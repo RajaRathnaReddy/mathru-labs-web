@@ -28,6 +28,14 @@ const EDGES: [number, number][] = [
   [10, 2], [6, 9], [7, 4], [8, 11], [5, 0], [1, 5],
 ];
 
+// ── Flowing data pulse along an edge ──
+interface PulseData {
+  edgeIndex: number;
+  progress: number;
+  speed: number;
+  delay: number;
+  active: boolean;
+}
 
 // ── Mouse tracking ──
 function useMousePosition() {
@@ -262,6 +270,133 @@ function ConnectionLines({ mouseRef }: { mouseRef: React.RefObject<THREE.Vector2
   );
 }
 
+// ── Flowing data pulses ──
+function DataPulses({ mouseRef }: { mouseRef: React.RefObject<THREE.Vector2> }) {
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+  const { viewport } = useThree();
+
+  const PULSE_COUNT = 30;
+
+  const pulses = useMemo<PulseData[]>(() => {
+    return Array.from({ length: PULSE_COUNT }, (_, i) => ({
+      edgeIndex: i % EDGES.length,
+      progress: Math.random(),
+      speed: 0.15 + Math.random() * 0.25,
+      delay: Math.random() * 3,
+      active: true,
+    }));
+  }, []);
+
+  const material = useMemo(() => {
+    return new THREE.ShaderMaterial({
+      uniforms: {
+        uColor: { value: new THREE.Color('#2DD4BF') },
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 uColor;
+        varying vec2 vUv;
+        void main() {
+          float dist = length(vUv - 0.5) * 2.0;
+          float alpha = smoothstep(1.0, 0.0, dist);
+          gl_FragColor = vec4(uColor, alpha * 0.8);
+        }
+      `,
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+  }, []);
+
+  // Pre-seed initial matrices off-screen with scale 0 so NO pulse can ever appear at (0,0,0)
+  const setMeshRef = useCallback((mesh: THREE.InstancedMesh | null) => {
+    meshRef.current = mesh;
+    if (!mesh) return;
+    const dummyObj = new THREE.Object3D();
+    dummyObj.position.set(0, 0, -9999);
+    dummyObj.scale.set(0, 0, 0);
+    dummyObj.updateMatrix();
+    for (let i = 0; i < PULSE_COUNT; i++) {
+      mesh.setMatrixAt(i, dummyObj.matrix);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+  }, []);
+
+  useFrame((state) => {
+    if (!meshRef.current || !mouseRef.current) return;
+    const time = state.clock.elapsedTime;
+    const dt = state.clock.getDelta();
+    const mouseX = mouseRef.current.x * viewport.width * 0.5;
+    const mouseY = mouseRef.current.y * viewport.height * 0.5;
+
+    pulses.forEach((pulse, i) => {
+      if (time < pulse.delay) {
+        dummy.position.set(0, 0, -1000);
+        dummy.scale.setScalar(0);
+        dummy.updateMatrix();
+        meshRef.current!.setMatrixAt(i, dummy.matrix);
+        return;
+      }
+
+      pulse.progress += dt * pulse.speed;
+      if (pulse.progress > 1) {
+        pulse.progress = 0;
+        pulse.edgeIndex = Math.floor(Math.random() * EDGES.length);
+        pulse.speed = 0.15 + Math.random() * 0.25;
+      }
+
+      const [fromIdx, toIdx] = EDGES[pulse.edgeIndex];
+      const from = NODE_POSITIONS[fromIdx];
+      const to = NODE_POSITIONS[toIdx];
+
+      // Interpolate along edge with same offsets as nodes
+      const getPos = (base: [number, number, number], idx: number) => {
+        const breathX = Math.sin(time * 0.3 + idx * 0.7) * 0.08;
+        const breathY = Math.cos(time * 0.4 + idx * 0.5) * 0.08;
+        const dx = mouseX - base[0];
+        const dy = mouseY - base[1];
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const influence = Math.max(0, 1 - dist / 5) * 0.15;
+        return [
+          base[0] + breathX + dx * influence,
+          base[1] + breathY + dy * influence,
+          base[2],
+        ];
+      };
+
+      const fPos = getPos(from, fromIdx);
+      const tPos = getPos(to, toIdx);
+      const t = pulse.progress;
+
+      dummy.position.set(
+        fPos[0] + (tPos[0] - fPos[0]) * t,
+        fPos[1] + (tPos[1] - fPos[1]) * t,
+        fPos[2] + (tPos[2] - fPos[2]) * t + 0.1
+      );
+
+      // Pulse scale — grows at middle, shrinks at ends
+      const sizeFactor = Math.sin(t * Math.PI) * 0.12 + 0.04;
+      dummy.scale.setScalar(sizeFactor);
+      dummy.updateMatrix();
+      meshRef.current!.setMatrixAt(i, dummy.matrix);
+    });
+
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  });
+
+  return (
+    <instancedMesh ref={setMeshRef} args={[undefined, undefined, PULSE_COUNT]} material={material}>
+      <planeGeometry args={[1, 1]} />
+    </instancedMesh>
+  );
+}
 
 // ── Background subtle glow particles ──
 function BackgroundParticles() {
@@ -345,6 +480,7 @@ function Scene({ onFrame }: { onFrame?: () => void }) {
       <BackgroundParticles />
       <ConnectionLines mouseRef={mouseRef} />
       <Nodes mouseRef={mouseRef} />
+      <DataPulses mouseRef={mouseRef} />
     </>
   );
 }
