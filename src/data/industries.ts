@@ -807,8 +807,8 @@ export const INDUSTRIES: Industry[] = [
     accentHue: 340,
     icon: 'heart-handshake',
     tagline: 'High-volume member records, automated welfare follow-ups, 80G tax receipts, and scheduled broadcasts.',
-    badge: 'Scale Tested (700K+ Users)',
-    stats: ['8 modules', 'AI-powered', '700K+ Records'],
+    badge: 'Enterprise Scale Tested',
+    stats: ['8 modules', 'AI-powered', 'High-Volume Data'],
     coreModules: [
       'Member & Donor 360 CRM',
       'High-Volume Follow-up Engine',

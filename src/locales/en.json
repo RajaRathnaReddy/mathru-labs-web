@@ -53,12 +53,12 @@
     "outcomeText": "Zero lost customer leads, 24/7 autonomous WhatsApp responses, custom CRM tracking, and total executive visibility into daily operations.",
     "sideBySide": "Side-by-Side",
     "scaleBadge": "Real-World Scale & Reliability",
-    "scaleTitle": "Built for real business scale — from local clinics to 700,000+ records",
-    "scaleDesc": "Whether you are a diagnostic lab handling 100 daily tests or a multi-branch network with hundreds of thousands of members, our custom software keeps operations instant, accurate, and completely automated.",
+    "scaleTitle": "Built for real business scale — from local clinics to massive enterprise datasets",
+    "scaleDesc": "Whether you are a diagnostic lab handling 100 daily tests or an organization managing massive multi-branch operations, our custom software keeps workflows instant, accurate, and completely automated.",
     "benchmarkBadge": "Live Production Benchmark · Multi-Branch Scale",
-    "benchmarkTitle": "Automating Operations for 700,000+ Active Members Across All Regional Branches",
-    "benchmarkDesc": "A look at the actual custom infrastructure we built and manage for high-capacity community networks — proving our systems handle massive data volume, AI personalization, and daily automation flawlessly.",
-    "activeProfiles": "700K+ Active Profiles",
+    "benchmarkTitle": "Automating High-Volume Operations Across Multi-Branch Regional Networks",
+    "benchmarkDesc": "A look at the actual custom infrastructure we built and manage for high-capacity community networks — proving our multi-featured architecture handles massive data volume, AI personalization, and daily automation flawlessly.",
+    "activeProfiles": "High-Volume Multi-Branch Scale",
     "guarantees": [
       {
         "title": "Instant 24/7 Response",
@@ -74,9 +74,9 @@
       },
       {
         "title": "Battle-Tested at Scale",
-        "highlight": "700,000+ Records Handled",
+        "highlight": "Massive Data Volume",
         "badge": "High-Volume Scale",
-        "description": "Not an experiment. Our automation engines already power large-scale community organizations managing 7 Lakh+ active member records and daily automated follow-ups."
+        "description": "Not an experiment. Our automation engines already power large-scale community organizations managing massive active member datasets, multi-branch synchronization, and daily automated follow-ups."
       }
     ],
     "benchmarkFeatures": [
