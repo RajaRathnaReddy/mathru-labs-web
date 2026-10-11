@@ -5,13 +5,6 @@ import { useMemo } from 'react';
 // ── SVG Fallback for low-end devices ──
 // Animated constellation of dots and lines — pure CSS animation, no JS overhead
 
-interface NodeDef {
-  cx: number;
-  cy: number;
-  r: number;
-  delay: number;
-}
-
 interface EdgeDef {
   x1: number;
   y1: number;
@@ -85,7 +78,7 @@ export function LivingWorkflowFallback() {
         x2: nodePositions[to][0],
         y2: nodePositions[to][1],
         delay: i * 0.4,
-        duration: 2 + Math.random(),
+        duration: 2 + ((i * 3) % 10) * 0.1,
       };
     });
 

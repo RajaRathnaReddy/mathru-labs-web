@@ -22,8 +22,20 @@ const securityHeaders = [
     value: "strict-origin-when-cross-origin",
   },
   {
+    key: "X-Permitted-Cross-Domain-Policies",
+    value: "none",
+  },
+  {
+    key: "Cross-Origin-Opener-Policy",
+    value: "same-origin",
+  },
+  {
+    key: "Cross-Origin-Resource-Policy",
+    value: "same-origin",
+  },
+  {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+    value: "camera=(), microphone=(), geolocation=(), browsing-topics=(), payment=()",
   },
   {
     key: "Content-Security-Policy",
@@ -35,9 +47,11 @@ const securityHeaders = [
       "img-src 'self' data: https: blob:",
       "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
       "worker-src 'self' blob:",
+      "object-src 'none'",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
+      "upgrade-insecure-requests",
     ].join("; "),
   },
 ];

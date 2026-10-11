@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/providers/LanguageProvider';
-import { IndustrySimulation } from '@/data/industrySimulations';
+import { IndustrySimulation, SimulationMessage } from '@/data/industrySimulations';
 import { RotateCcw, Play, Pause, FileText, CheckCheck, ShieldCheck } from 'lucide-react';
 
 interface WhatsAppSimulatorProps {
@@ -25,7 +25,7 @@ export function WhatsAppSimulator({
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const chatScrollRef = useRef<HTMLDivElement>(null);
 
-  const messages = simulation.messages || [];
+  const messages: SimulationMessage[] = useMemo(() => simulation.messages || [], [simulation.messages]);
 
   // Reset when simulation changes
   useEffect(() => {
